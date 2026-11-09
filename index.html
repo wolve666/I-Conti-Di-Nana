@@ -46,7 +46,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 button,input,select{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:2px solid var(--primary);outline-offset:2px}
-.wrap{max-width:640px;margin:0 auto;padding:16px 16px 120px}
+.wrap{max-width:640px;margin:0 auto;padding:16px 16px 190px}
 
 header.top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:4px 0 14px}
 .monthnav{display:flex;align-items:center;gap:4px}
@@ -101,7 +101,7 @@ h2{font-size:1rem;font-weight:800;margin:24px 0 10px}
 .btn.small{padding:8px 12px;font-size:.88rem}
 
 nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);z-index:20}
-nav.tabs .in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+nav.tabs .in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
 nav.tabs button{background:none;border:0;padding:10px 4px 12px;font-size:.78rem;font-weight:700;color:var(--ink-2);display:flex;flex-direction:column;align-items:center;gap:2px}
 nav.tabs button svg{width:22px;height:22px}
 nav.tabs button.on{color:var(--primary)}
@@ -238,6 +238,62 @@ section.enter{animation:enter .35s cubic-bezier(.2,.8,.2,1)}
 .skin .pv{height:70px;border-radius:12px;position:relative;overflow:hidden;border:1px solid var(--line)}
 .skin b{font-weight:800}
 .skin small{color:var(--ink-2);font-size:.78rem}
+
+/* ---------- Filtro categoria ---------- */
+.catbar{display:flex;gap:6px;overflow-x:auto;padding:8px 0 2px;scrollbar-width:none}
+.catbar::-webkit-scrollbar{display:none}
+.catbar .chip{flex:none;font-size:.82rem;padding:6px 12px}
+.catsum{margin-top:10px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:2px 10px;box-shadow:var(--shadow);animation:enter .3s ease}
+.catsum b{font-weight:900}
+.catsum .big2{font-size:1.4rem;font-weight:900;letter-spacing:-.02em}
+.catsum small{color:var(--ink-2)}
+.catsum .x2{grid-row:1/3;grid-column:2;align-self:start;background:none;border:0;color:var(--ink-2);font-size:1.2rem}
+/* ---------- Calcolatrice ---------- */
+.calcfab{position:fixed;right:max(23px,calc(50% - 297px));bottom:calc(146px + env(safe-area-inset-bottom,0px));width:44px;height:44px;border-radius:50%;border:2px solid var(--primary);background:var(--surface);color:var(--primary);display:grid;place-items:center;z-index:36;box-shadow:var(--shadow);transition:transform .25s cubic-bezier(.3,1.6,.5,1),top .3s,bottom .3s}
+.calcfab:active{transform:scale(.88)}
+.calcfab svg{width:22px;height:22px}
+body.sheet-open .calcfab{bottom:auto;top:calc(12px + env(safe-area-inset-top,0px))}
+.calc{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:10px;width:236px;z-index:37;background:var(--surface);border:1.5px solid var(--primary);border-radius:20px;box-shadow:0 12px 34px rgba(0,0,0,.18);padding:8px 10px 10px;touch-action:none;transform-origin:top right;animation:calcIn .25s cubic-bezier(.2,1.3,.4,1)}
+@keyframes calcIn{from{opacity:0;transform:scale(.7)}}
+.calc .hd{display:flex;align-items:center;justify-content:space-between;cursor:grab;padding:2px 2px 6px;font-size:.78rem;font-weight:900;color:var(--ink-2)}
+.calc .hd button{background:none;border:0;color:var(--ink-2);font-size:1.1rem;width:28px;height:28px;border-radius:8px}
+.calc .scr{background:var(--surface-2);border-radius:12px;padding:5px 10px;text-align:right;margin-bottom:7px;min-height:48px}
+.calc .ex{font-size:.8rem;color:var(--ink-2);min-height:1.1em;word-break:break-all}
+.calc .rs{font-size:1.45rem;font-weight:900;color:var(--ink);letter-spacing:-.02em;word-break:break-all}
+.calc .keys{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.calc .keys button{height:34px;border-radius:11px;border:1px solid var(--line);background:var(--surface);font-weight:800;font-size:1rem;color:var(--ink)}
+.calc .keys button:active{transform:scale(.92);background:var(--surface-2)}
+.calc .keys .op{color:var(--primary);background:var(--surface-2)}
+.calc .keys .eq{background:var(--primary);color:var(--primary-ink);border-color:var(--primary)}
+.calc .use{width:100%;margin-top:7px;padding:9px;font-size:.85rem}
+.calc.hidden{display:none}
+
+/* ---------- Progetti ---------- */
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+.ptile{position:relative;overflow:hidden;min-height:168px;border:1px solid var(--line);background:var(--surface);border-radius:26px;padding:16px 14px 14px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;gap:10px;box-shadow:var(--shadow);transition:transform .15s ease;animation:enter .4s cubic-bezier(.2,.8,.2,1) both}
+.ptile:active{transform:scale(.96)}
+.ptile.wide{grid-column:1/-1;min-height:128px;background:var(--surface-2)}
+.ptile .kick{font-size:.72rem;font-weight:900;color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em;position:relative}
+.ptile b{font-size:1.2rem;font-weight:900;line-height:1.15;position:relative;word-break:break-word;color:var(--ink)}
+.ptile .fig{position:relative;font-weight:900;font-size:1.05rem}
+.ptile small{position:relative;color:var(--ink-2);font-size:.78rem;display:block}
+.ptile .bar{position:relative;margin-top:4px}
+.ptile .wm{position:absolute;right:-18px;top:-16px;width:92px;height:92px;pointer-events:none}
+.ptile .wm .sk-f{opacity:.22}
+.ptile .wm .sk-s{opacity:.55}
+.ptile.add{border:2px dashed var(--line);background:transparent;box-shadow:none;align-items:center;justify-content:center;color:var(--ink-2);font-weight:900;min-height:168px}
+.ptile.add span{font-size:2.2rem;line-height:1;color:var(--primary)}
+.detailhead{display:flex;align-items:center;gap:10px;margin:6px 0 12px}
+.detailhead h1{flex:1;margin:0;font-size:1.35rem;font-weight:900;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.plan .pi{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.plan .pi:last-of-type{border-bottom:0}
+.plan .pi .t{flex:1;min-width:0}
+.plan .pi .t b{display:block;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.plan .pi.done .t b{text-decoration:line-through;color:var(--ink-2)}
+.plan .pi .ck{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);background:none;display:grid;place-items:center;flex:none;color:var(--primary-ink)}
+.plan .pi.done .ck{background:var(--primary);border-color:var(--primary)}
+.plan .sum{display:flex;justify-content:space-between;font-weight:900;padding-top:10px;border-top:2px solid var(--ink);margin-top:4px}
+.pjtag{display:inline-block;font-size:.68rem;font-weight:900;border-radius:6px;padding:0 6px;margin-left:4px;background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}
 </style>
 </head>
 <body>
@@ -309,7 +365,7 @@ section.enter{animation:enter .35s cubic-bezier(.2,.8,.2,1)}
 </g><g class="sk-s"><use href="#hibS" x="30" y="50" width="120" height="120" transform="rotate(-15 90 110)" style="color:#F1F0EC"/></g></svg>
 <svg class="flora ml" viewBox="0 0 100 100" aria-hidden="true"><use href="#hib" x="5" y="5" width="90" height="90"/></svg>
 <div class="wrap">
-  <div class="brandrow"><div class="brand">I conti di Nana</div><span class="ver">v1.3</span><span class="status" id="status">Caricamento…</span></div>
+  <div class="brandrow"><div class="brand">I conti di Nana</div><span class="ver">v1.5</span><span class="status" id="status">Caricamento…</span></div>
   <header class="top">
     <div class="monthnav">
       <button class="iconbtn" id="prevM" aria-label="Mese precedente">‹</button>
@@ -318,8 +374,41 @@ section.enter{animation:enter .35s cubic-bezier(.2,.8,.2,1)}
     </div>
   </header>
 
+  <!-- HOME PROGETTI -->
+  <section id="v-home">
+    <div class="pgrid" id="pGrid"></div>
+  </section>
+
+  <!-- PROGETTO -->
+  <section id="v-progetto" class="hidden">
+    <div class="detailhead">
+      <button class="iconbtn" id="pjBack" aria-label="Indietro">‹</button>
+      <h1 id="pjTitle">—</h1>
+      <button class="iconbtn" id="pjEdit" aria-label="Modifica progetto"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></button>
+    </div>
+    <div class="hero">
+      <svg class="mini" viewBox="0 0 100 100" aria-hidden="true"><use class="sk-f" href="#hib" width="100" height="100"/><use class="sk-s" href="#hibS" width="100" height="100" style="color:#F2F1EC"/></svg>
+      <div class="lbl" id="pjLbl">Speso finora</div>
+      <div class="big num" id="pjSpent">0,00 €</div>
+      <div class="scale" id="pjScale" aria-hidden="true"></div>
+      <div class="legend">
+        <div><span class="dot" style="background:var(--ink-2)"></span>Budget<b class="num" id="pjBudget">—</b></div>
+        <div><span class="dot" style="background:var(--save)"></span>Messi da parte<b class="num" id="pjSaved">0</b></div>
+        <div><span class="dot" style="background:var(--in)"></span>Da spendere<b class="num" id="pjLeft">—</b></div>
+      </div>
+    </div>
+    <div class="btnrow">
+      <button class="btn small" id="pjSaveBtn">Metti da parte</button>
+      <button class="btn ghost small" id="pjSpendBtn">Registra spesa</button>
+    </div>
+    <h2>Spese previste</h2>
+    <div class="card plan" id="pjPlan"></div>
+    <h2>Movimenti del progetto</h2>
+    <div class="list" id="pjList"></div>
+  </section>
+
   <!-- MESE -->
-  <section id="v-mese">
+  <section id="v-mese" class="hidden">
     <div class="hero">
       <svg class="mini" viewBox="0 0 100 100" aria-hidden="true"><use class="sk-f" href="#hib" width="100" height="100"/><use class="sk-s" href="#hibS" width="100" height="100" style="color:#F2F1EC"/></svg>
       <div class="lbl">Rimasto questo mese</div>
@@ -338,6 +427,8 @@ section.enter{animation:enter .35s cubic-bezier(.2,.8,.2,1)}
       <button class="chip" data-f="entrata">Entrate</button>
       <button class="chip" data-f="risparmio">Risparmi</button>
     </div>
+    <div class="catbar" id="catBar"></div>
+    <div id="catSum"></div>
     <div class="list" id="movList" style="margin-top:10px"></div>
   </section>
 
@@ -392,9 +483,23 @@ section.enter{animation:enter .35s cubic-bezier(.2,.8,.2,1)}
 </div>
 
 <button class="fab" id="fab" aria-label="Aggiungi movimento">+</button>
+<button class="calcfab" id="calcBtn" aria-label="Calcolatrice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M8 7h8M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 15.5h.01M12 15.5h.01M15.5 15.5h.01M8.5 18.5h.01M12 18.5h.01M15.5 18.5h.01" stroke-width="2.4"/></svg></button>
+<div class="calc hidden" id="calc" role="dialog" aria-label="Calcolatrice">
+  <div class="hd" id="calcHd"><span>⠿ Calcolatrice</span><button id="calcX" aria-label="Chiudi calcolatrice">×</button></div>
+  <div class="scr"><div class="ex num" id="cEx"></div><div class="rs num" id="cRs">0</div></div>
+  <div class="keys" id="cKeys">
+    <button data-k="C" class="op">C</button><button data-k="B" class="op">⌫</button><button data-k="%" class="op">%</button><button data-k="/" class="op">÷</button>
+    <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button><button data-k="*" class="op">×</button>
+    <button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button><button data-k="-" class="op">−</button>
+    <button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button><button data-k="+" class="op">+</button>
+    <button data-k="0">0</button><button data-k="00">00</button><button data-k=",">,</button><button data-k="=" class="eq">=</button>
+  </div>
+  <button class="btn use" id="calcUse">Usa come importo</button>
+</div>
 
 <nav class="tabs"><div class="in">
-  <button data-v="mese" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Mese</button>
+  <button data-v="home" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2.5"/><rect x="13" y="3" width="8" height="8" rx="2.5"/><rect x="3" y="13" width="8" height="8" rx="2.5"/><rect x="13" y="13" width="8" height="8" rx="2.5"/></svg>Progetti</button>
+  <button data-v="mese"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Mese</button>
   <button data-v="grafici"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Grafici</button>
   <button data-v="salvadanai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 11c0-3.3-3.1-6-7-6S5 7.7 5 11c0 1.9 1 3.6 2.6 4.7L8 19h3v-2h2v2h3l.5-3.3A6 6 0 0 0 19 11Z"/><path d="M19 10h2v3h-2M10 5.3 9 3"/></svg>Risparmi</button>
   <button data-v="impostazioni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>Impostazioni</button>
@@ -467,10 +572,11 @@ const DEFAULT_SETTINGS = {
   catOut:["Casa","Bollette","Spesa","Trasporti","Salute","Figli","Svago","Abbigliamento","Regali","Altro"],
   catIn:["Stipendio","Extra","Rimborsi","Altro"],
   pigs:[{id:"emergenze",nome:"Fondo emergenze",obiettivo:0}],
+  progetti:[],
   fixed:[]
 };
 
-const S = { settings: structuredClone(DEFAULT_SETTINGS), months:{}, cur: keyOf(todayISO()), filter:"tutti", view:"mese" };
+const S = { settings: structuredClone(DEFAULT_SETTINGS), months:{}, cur: keyOf(todayISO()), filter:"tutti", cat:null, view:"home", pj:null };
 
 /* ---------- Archivio: database dell'artifact, con riserva in locale ---------- */
 const Store = {
@@ -551,8 +657,19 @@ function pigTotals(){
 const pigName = id => (S.settings.pigs.find(p=>p.id===id)||{nome:"Salvadanaio eliminato"}).nome;
 
 /* ---------- Render ---------- */
+const pjOf = id => S.settings.progetti.find(p=>p.id===id);
+const pjName = id => (pjOf(id)||{nome:"Progetto eliminato"}).nome;
+function pjStats(pj){
+  const movs = Object.values(S.months).flatMap(m=>m.movimenti).filter(m=>m.progetto===pj.id && m.tipo!=="risparmio");
+  const spent = movs.reduce((a,m)=>a+(m.tipo==="uscita"?m.importo:-m.importo),0);
+  const saved = pigTotals()[pj.pigId]||0;
+  const planned = (pj.previste||[]).filter(x=>!x.fatto).reduce((a,x)=>a+x.importo,0);
+  return {movs, spent, saved, planned, left: pj.budget>0 ? pj.budget-spent : null};
+}
 function render(){
   $("#monthTitle").textContent = monthName(S.cur);
+  if (S.view==="home") renderHome();
+  if (S.view==="progetto") renderProject();
   if (S.view==="mese") renderMonth();
   if (S.view==="grafici") renderCharts();
   if (S.view==="salvadanai") renderPigs();
@@ -584,7 +701,25 @@ function renderMonth(){
     saveMonth(S.cur); toast("Fisse aggiunte"); render(); heartBurst($("#hBal"));
   };
 
-  const list = mov.filter(m => S.filter==="tutti" || m.tipo===S.filter).slice().sort((a,b)=> b.data.localeCompare(a.data) || (b.id>a.id?1:-1));
+  const byType = mov.filter(m => S.filter==="tutti" || m.tipo===S.filter);
+  const catKey = m => m.tipo+"|"+m.categoria;
+  const catLabel = m => m.tipo==="risparmio" ? pigName(m.categoria) : m.categoria;
+  const present = {}; byType.forEach(m=>{ const k=catKey(m); (present[k] ||= {label:catLabel(m), tipo:m.tipo, cat:m.categoria, tot:0}).tot += m.importo; });
+  const keys = Object.keys(present).sort((a,b)=>present[b].tot-present[a].tot);
+  if (S.cat && !present[S.cat]) S.cat = null;
+  const dup = l => keys.filter(k=>present[k].label===l).length>1;
+  $("#catBar").innerHTML = keys.length>1 || S.cat ? `<button class="chip${!S.cat?" on":""}" data-c="">Tutte le categorie</button>` + keys.map(k=>`<button class="chip${S.cat===k?" on":""}" data-c="${esc(k)}">${esc(present[k].label)}${dup(present[k].label)?(present[k].tipo==="entrata"?" (entrata)":" (uscita)"):""}</button>`).join("") : "";
+  $$("#catBar .chip").forEach(b=>b.onclick=()=>{ S.cat=b.dataset.c||null; renderMonth(); });
+  if (S.cat){
+    const c=present[S.cat], y=S.cur.slice(0,4);
+    const yearTot = Object.keys(S.months).filter(k=>k.startsWith(y)).flatMap(k=>S.months[k].movimenti).filter(m=>catKey(m)===S.cat).reduce((a,m)=>a+m.importo,0);
+    const n = byType.filter(m=>catKey(m)===S.cat).length;
+    const col = c.tipo==="entrata"?"var(--in)":c.tipo==="uscita"?"var(--out)":"var(--save)";
+    $("#catSum").innerHTML = `<div class="catsum"><span><b>${esc(c.label)}</b> <small>· ${n} ${n===1?"movimento":"movimenti"}</small></span><button class="x2" id="catClr" aria-label="Togli filtro">×</button>
+      <span class="big2 num" style="color:${col}">${fmt(c.tot)}</span><small>in ${esc(monthName(S.cur))} · ${fmt(yearTot)} nel ${y}</small></div>`;
+    $("#catClr").onclick=()=>{ S.cat=null; renderMonth(); };
+  } else $("#catSum").innerHTML = "";
+  const list = byType.filter(m => !S.cat || catKey(m)===S.cat).slice().sort((a,b)=> b.data.localeCompare(a.data) || (b.id>a.id?1:-1));
   const el = $("#movList");
   if (!list.length){
     el.innerHTML = `<div class="empty">${mov.length ? "Nessun movimento di questo tipo." : "Nessun movimento in "+esc(monthName(S.cur))+".<br>Tocca + per registrare la prima spesa o entrata."}</div>`;
@@ -603,7 +738,7 @@ function renderMonth(){
     const title = m.nota || cat;
     html += `<button class="row${m.id===freshId?" fresh":""}" data-id="${m.id}">
       <span class="badge" style="background:color-mix(in srgb, ${color} 15%, transparent);color:${color}">${esc((cat||"?").charAt(0).toUpperCase())}</span>
-      <span class="t"><b>${esc(title)}</b><small>${esc(m.nota ? cat : (m.tipo==="risparmio" ? (m.importo<0?"Prelievo":"Messo da parte") : m.tipo==="entrata"?"Entrata":"Uscita"))}</small></span>
+      <span class="t"><b>${esc(title)}</b><small>${esc(m.nota ? cat : (m.tipo==="risparmio" ? (m.importo<0?"Prelievo":"Messo da parte") : m.tipo==="entrata"?"Entrata":"Uscita"))}${m.progetto?`<span class="pjtag">${esc(pjName(m.progetto))}</span>`:""}</small></span>
       <span class="amt num" style="color:${color}">${sign}${fmt(Math.abs(m.importo))}</span>
     </button>`;
   });
@@ -770,17 +905,105 @@ function renderStoreInfo(){
 /* ---------- Form movimento ---------- */
 function parseNum(s){ s = String(s||"").trim().replace(/\s|€/g,""); if (s.includes(",")) s = s.replace(/\./g,"").replace(",","."); const n = parseFloat(s); return isFinite(n) ? Math.round(n*100)/100 : NaN; }
 
+/* ---------- Progetti ---------- */
+function renderHome(){
+  const t = totals(keyOf(todayISO()));
+  const wm = (op) => `<svg class="wm" viewBox="0 0 100 100" aria-hidden="true"><use class="sk-f" href="#hib" width="100" height="100"/><use class="sk-s" href="#hibS" width="100" height="100" style="color:#ECECE8"/></svg>`;
+  let html = `<button class="ptile wide" id="tMese" style="animation-delay:0ms">${wm()}<span class="kick">Conti del mese</span><b style="text-transform:capitalize">${esc(new Date().toLocaleDateString("it-IT",{month:"long",year:"numeric"}))}</b><span class="fig num" style="color:${t.rimasto<0?"var(--out)":"var(--ink)"}">${fmt(t.rimasto)} <small style="display:inline">rimasti · ${fmt(t.uscite)} di spese</small></span></button>`;
+  S.settings.progetti.forEach((pj,i)=>{
+    const st = pjStats(pj), pct = pj.budget>0 ? Math.min(100, st.spent/pj.budget*100) : 0;
+    html += `<button class="ptile" data-pj="${pj.id}" style="animation-delay:${(i+1)*50}ms">${wm()}<span class="kick">Progetto</span><b>${esc(pj.nome)}</b>
+      <span><span class="fig num">${fmt(st.spent)}</span><small>${pj.budget>0?"spesi su "+fmt(pj.budget):"spesi finora"}</small>
+      ${pj.budget>0?`<div class="bar"><span data-w="${pct.toFixed(1)}" style="width:0"></span></div>`:""}
+      ${st.saved?`<small style="margin-top:4px">${fmt(st.saved)} messi da parte</small>`:""}${pj.scadenza?`<small>entro il ${esc(new Date(pj.scadenza+"T12:00:00").toLocaleDateString("it-IT",{day:"numeric",month:"short",year:"numeric"}))}</small>`:""}</span></button>`;
+  });
+  html += `<button class="ptile add" id="tAdd"><span>+</span>Nuovo progetto</button>`;
+  $("#pGrid").innerHTML = html;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>$$("#pGrid .bar span[data-w]").forEach(s=>s.style.width=s.dataset.w+"%")));
+  $("#tMese").onclick = () => goView("mese");
+  $("#tAdd").onclick = () => openProjectForm(null);
+  $$("#pGrid [data-pj]").forEach(b=>b.onclick=()=>openProject(b.dataset.pj));
+}
+function openProject(id){ S.pj=id; history.pushState({v:"progetto"},""); goView("progetto"); }
+function renderProject(){
+  const pj = pjOf(S.pj); if (!pj){ goView("home"); return; }
+  const st = pjStats(pj);
+  $("#pjTitle").textContent = pj.nome;
+  $("#pjLbl").textContent = pj.descr ? "Speso finora · "+pj.descr : "Speso finora";
+  animateNum($("#pjSpent"), st.spent);
+  $("#pjBudget").textContent = pj.budget>0 ? fmt(pj.budget) : "—";
+  animateNum($("#pjSaved"), st.saved);
+  $("#pjLeft").textContent = st.left===null ? "—" : fmt(st.left);
+  const base = Math.max(pj.budget||0, st.spent, 1);
+  $("#pjScale").innerHTML = `<span style="width:${(Math.max(0,st.spent)/base*100).toFixed(1)}%;background:var(--out)"></span><span style="width:${(Math.min(st.saved, Math.max(0,base-st.spent))/base*100).toFixed(1)}%;background:var(--save)"></span>`;
+  // spese previste
+  const items = pj.previste||[];
+  $("#pjPlan").innerHTML = (items.length ? items.map(x=>`<div class="pi${x.fatto?" done":""}"><button class="ck" data-ck="${x.id}" aria-label="${x.fatto?"Fatta":"Segna come fatta"}">${x.fatto?"✓":""}</button><span class="t"><b>${esc(x.nome)}</b>${x.fatto?`<small class="muted">fatta</small>`:""}</span><b class="num">${fmt(x.importo)}</b><button class="x" data-delpi="${x.id}" aria-label="Elimina ${esc(x.nome)}">×</button></div>`).join("")
+      + `<div class="sum"><span>Ancora da spendere</span><span class="num">${fmt(st.planned)}</span></div>` : `<p class="muted" style="margin:0">Elenca qui cosa servirà: mobili, biglietti, lavori… e segnalo come fatto quando lo paghi.</p>`)
+    + `<div class="addline"><input id="piN" placeholder="Cosa serve" aria-label="Nuova spesa prevista"><input id="piI" class="num" inputmode="decimal" placeholder="€" style="max-width:90px" aria-label="Importo previsto"><button class="btn small" id="piAdd">Aggiungi</button></div>`;
+  const add = () => { const n=$("#piN").value.trim(), v=parseNum($("#piI").value); if(!n){ $("#piN").focus(); return; } if(!(v>0)){ $("#piI").focus(); return; }
+    (pj.previste ||= []).push({id:uid(), nome:n, importo:v, fatto:false}); saveSettings(); renderProject(); $("#piN").focus(); };
+  $("#piAdd").onclick = add; $("#piI").onkeydown = e => { if(e.key==="Enter") add(); };
+  $$("#pjPlan [data-ck]").forEach(b=>b.onclick=()=>{ const x=items.find(i=>i.id===b.dataset.ck);
+    if (x.fatto){ if(!confirm("Rimettere tra le spese da fare? Il movimento già registrato resta.")) return; x.fatto=false; x.movId=null; saveSettings(); renderProject(); }
+    else openForm(null, {tipo:"uscita", importo:x.importo, nota:x.nome, progetto:pj.id, previstaId:x.id}); });
+  $$("#pjPlan [data-delpi]").forEach(b=>b.onclick=()=>{ pj.previste = items.filter(i=>i.id!==b.dataset.delpi); saveSettings(); renderProject(); });
+  // movimenti del progetto (anche i risparmi del suo salvadanaio)
+  const all = Object.values(S.months).flatMap(m=>m.movimenti).filter(m=>m.progetto===pj.id || (m.tipo==="risparmio" && m.categoria===pj.pigId)).sort((a,b)=>b.data.localeCompare(a.data)||(b.id>a.id?1:-1));
+  const el = $("#pjList");
+  if (!all.length){ el.innerHTML = `<div class="empty">Ancora nessun movimento.<br>Registra una spesa o metti da parte qualcosa per questo progetto.</div>`; return; }
+  el.innerHTML = all.map(m=>{
+    const color = m.tipo==="entrata"?"var(--in)":m.tipo==="uscita"?"var(--out)":"var(--save)";
+    const sign = m.tipo==="entrata"?"+":m.tipo==="uscita"?"−":(m.importo<0?"↩ ":"→ ");
+    const lab = m.tipo==="risparmio" ? (m.importo<0?"Prelievo":"Messo da parte") : m.categoria;
+    return `<button class="row${m.id===freshId?" fresh":""}" data-id="${m.id}" data-k="${keyOf(m.data)}"><span class="badge" style="background:color-mix(in srgb, ${color} 15%, transparent);color:${color}">${esc((lab||"?").charAt(0).toUpperCase())}</span><span class="t"><b>${esc(m.nota||lab)}</b><small>${esc(lab)} · ${esc(new Date(m.data+"T12:00:00").toLocaleDateString("it-IT",{day:"numeric",month:"short",year:"numeric"}))}</small></span><span class="amt num" style="color:${color}">${sign}${fmt(Math.abs(m.importo))}</span></button>`;
+  }).join("");
+  freshId = null;
+  el.querySelectorAll(".row").forEach(r=>r.onclick=()=>openForm((S.months[r.dataset.k]?.movimenti||[]).find(m=>m.id===r.dataset.id)));
+}
+function openProjectForm(pj){
+  const isNew = !pj;
+  pj = pj ? {...pj} : {id:uid(), nome:"", budget:0, scadenza:"", descr:"", previste:[]};
+  openSheet(`<h3>${isNew?"Nuovo progetto":"Modifica progetto"}</h3>
+    <div class="field"><label for="pjN">Nome</label><input id="pjN" value="${esc(pj.nome)}" placeholder="Vacanze estive, cucina nuova, regali di Natale…"></div>
+    <div class="two"><div class="field"><label for="pjB">Budget (facoltativo)</label><input id="pjB" class="num" inputmode="decimal" placeholder="0,00" value="${pj.budget?String(pj.budget).replace(".",","):""}"></div>
+      <div class="field"><label for="pjD">Entro il (facoltativo)</label><input id="pjD" type="date" value="${esc(pj.scadenza||"")}"></div></div>
+    <div class="field"><label for="pjT">Nota breve</label><input id="pjT" value="${esc(pj.descr||"")}" placeholder="Facoltativa"></div>
+    <div class="actions">${isNew?"":`<button class="btn danger" id="pjDel">Elimina</button>`}<button class="btn" id="pjOk">${isNew?"Crea progetto":"Salva"}</button></div>`);
+  if (isNew) setTimeout(()=>$("#pjN").focus(),260);
+  $("#pjOk").onclick = () => {
+    const n=$("#pjN").value.trim(); if(!n){ $("#pjN").focus(); return; }
+    Object.assign(pj, {nome:n, budget:parseNum($("#pjB").value)||0, scadenza:$("#pjD").value||"", descr:$("#pjT").value.trim()});
+    if (!pj.pigId){ pj.pigId = "pj-"+pj.id; }
+    let pig = S.settings.pigs.find(p=>p.id===pj.pigId);
+    if (!pig){ pig = {id:pj.pigId, nome:n, obiettivo:pj.budget, progetto:pj.id}; S.settings.pigs.push(pig); }
+    else { pig.nome = n; pig.obiettivo = pj.budget; }
+    const i = S.settings.progetti.findIndex(x=>x.id===pj.id); if (i>=0) S.settings.progetti[i]=pj; else S.settings.progetti.push(pj);
+    saveSettings(); closeSheet();
+    if (isNew){ toast("Progetto creato"); heartBurst($("#tAdd")||$("#fab")); render(); } else { toast("Progetto salvato"); render(); }
+  };
+  const d=$("#pjDel"); if (d) d.onclick = () => {
+    if (!confirm("Eliminare il progetto? Le spese registrate restano nei conti del mese; i soldi messi da parte restano nei Risparmi.")) return;
+    S.settings.progetti = S.settings.progetti.filter(x=>x.id!==pj.id);
+    Object.keys(S.months).forEach(k=>{ let ch=false; S.months[k].movimenti.forEach(m=>{ if(m.progetto===pj.id){ delete m.progetto; ch=true; } }); if(ch) saveMonth(k); });
+    const pig = S.settings.pigs.find(p=>p.id===pj.pigId); if (pig){ if(!(pigTotals()[pig.id])) S.settings.pigs = S.settings.pigs.filter(p=>p.id!==pig.id); else delete pig.progetto; }
+    saveSettings(); closeSheet(); toast("Progetto eliminato"); if (S.view==="progetto") goView("home"); else render();
+  };
+}
+
 function openForm(mov, preset){
   const isNew = !mov;
   const st = {
     tipo: mov?.tipo || preset?.tipo || "uscita",
     categoria: mov?.categoria || preset?.categoria || "",
-    prelievo: mov ? mov.importo<0 : !!preset?.prelievo
+    prelievo: mov ? mov.importo<0 : !!preset?.prelievo,
+    progetto: mov ? (mov.progetto||"") : (preset?.progetto ?? (S.view==="progetto" ? S.pj : ""))
   };
   const curIsToday = keyOf(todayISO())===S.cur;
   const data0 = mov?.data || (curIsToday ? todayISO() : S.cur+"-01");
-  const imp0 = mov ? String(Math.abs(mov.importo)).replace(".",",") : "";
-  const nota0 = mov?.nota || "";
+  const imp0 = mov ? String(Math.abs(mov.importo)).replace(".",",") : (preset?.importo ? String(preset.importo).replace(".",",") : "");
+  const nota0 = mov?.nota || preset?.nota || "";
+  const previstaId = preset?.previstaId;
   const draw = (keep) => {
     const imp = keep ? $("#fmI").value : imp0, data = keep ? $("#fmD").value : data0, nota = keep ? $("#fmN").value : nota0;
     let opts;
@@ -795,14 +1018,16 @@ function openForm(mov, preset){
       <div class="field"><label for="fmI">Importo in euro</label><input id="fmI" class="amount-in num" inputmode="decimal" placeholder="0,00" value="${esc(imp)}"></div>
       ${st.tipo==="risparmio"?`<div class="seg" style="grid-template-columns:1fr 1fr"><button data-p="0" class="${!st.prelievo?"on":""}">Metto da parte</button><button data-p="1" class="${st.prelievo?"on":""}">Prelevo</button></div>`:""}
       <div class="field"><label>${st.tipo==="risparmio"?"Salvadanaio":"Categoria"}</label>
-        <div class="cats">${opts.length?opts.map(o=>`<button data-c="${esc(o.v)}" class="${o.v===st.categoria?"on":""}">${esc(o.l)}</button>`).join(""):`<span class="muted">Crea prima un salvadanaio dalla scheda Risparmi.</span>`}</div></div>
+        <div class="cats" id="fmCats">${opts.length?opts.map(o=>`<button data-c="${esc(o.v)}" class="${o.v===st.categoria?"on":""}">${esc(o.l)}</button>`).join(""):`<span class="muted">Crea prima un salvadanaio dalla scheda Risparmi.</span>`}</div></div>
+      ${st.tipo!=="risparmio" && S.settings.progetti.length ? `<div class="field"><label>Progetto</label><div class="cats" id="fmPj"><button data-p="" class="${!st.progetto?"on":""}">Nessuno</button>${S.settings.progetti.map(p=>`<button data-p="${p.id}" class="${p.id===st.progetto?"on":""}">${esc(p.nome)}</button>`).join("")}</div></div>` : ""}
       <div class="two">
         <div class="field"><label for="fmD">Data</label><input id="fmD" type="date" value="${esc(data)}"></div>
         <div class="field"><label for="fmN">Nota</label><input id="fmN" placeholder="Facoltativa" value="${esc(nota)}"></div></div>
       <div class="actions">${isNew?"":`<button class="btn danger" id="fmDel">Elimina</button>`}<button class="btn" id="fmOk">${isNew?"Aggiungi":"Salva modifiche"}</button></div>`);
     $$("#sheetBody .seg button[data-t]").forEach(b=>b.onclick=()=>{ st.tipo=b.dataset.t; draw(true); });
     $$("#sheetBody .seg button[data-p]").forEach(b=>b.onclick=()=>{ st.prelievo=b.dataset.p==="1"; draw(true); });
-    $$("#sheetBody .cats button").forEach(b=>b.onclick=()=>{ st.categoria=b.dataset.c; $$("#sheetBody .cats button").forEach(x=>x.classList.toggle("on",x===b)); });
+    $$("#fmCats button").forEach(b=>b.onclick=()=>{ st.categoria=b.dataset.c; $$("#fmCats button").forEach(x=>x.classList.toggle("on",x===b)); });
+    $$("#fmPj button").forEach(b=>b.onclick=()=>{ st.progetto=b.dataset.p; $$("#fmPj button").forEach(x=>x.classList.toggle("on",x===b)); });
     if (isNew && !keep) setTimeout(()=>$("#fmI").focus(),260);
     $("#fmOk").onclick = () => {
       let v = parseNum($("#fmI").value);
@@ -812,6 +1037,8 @@ function openForm(mov, preset){
       if (st.tipo==="risparmio" && st.prelievo) v = -v;
       const rec = {id: mov?.id || uid(), tipo:st.tipo, importo:v, categoria:st.categoria, data:d, nota:$("#fmN").value.trim()};
       if (mov?.fixedId) rec.fixedId = mov.fixedId;
+      if (st.tipo!=="risparmio" && st.progetto) rec.progetto = st.progetto;
+      if (previstaId){ const pj=pjOf(st.progetto); const x=pj?.previste?.find(i=>i.id===previstaId); if (x){ x.fatto=true; x.movId=rec.id; saveSettings(); } }
       if (mov){ // togli dal mese vecchio
         const ok = keyOf(mov.data); const mo = S.months[ok];
         if (mo){ mo.movimenti = mo.movimenti.filter(x=>x.id!==mov.id); if (ok!==keyOf(d)) saveMonth(ok); }
@@ -833,6 +1060,7 @@ function openForm(mov, preset){
     if (del) del.onclick = () => {
       if (!confirm("Eliminare questo movimento?")) return;
       const k = keyOf(mov.data); S.months[k].movimenti = S.months[k].movimenti.filter(x=>x.id!==mov.id);
+      S.settings.progetti.forEach(p=>(p.previste||[]).forEach(x=>{ if(x.movId===mov.id){ x.fatto=false; x.movId=null; } })); saveSettings();
       saveMonth(k); closeSheet(); render(); toast("Eliminato");
     };
   };
@@ -840,8 +1068,8 @@ function openForm(mov, preset){
 }
 
 /* ---------- Sheet ---------- */
-function openSheet(html){ $("#sheetBody").innerHTML = html; $("#sheetBg").classList.add("open"); $("#sheet").classList.add("open"); }
-function closeSheet(){ $("#sheetBg").classList.remove("open"); $("#sheet").classList.remove("open"); }
+function openSheet(html){ $("#sheetBody").innerHTML = html; $("#sheetBg").classList.add("open"); $("#sheet").classList.add("open"); document.body.classList.add("sheet-open"); }
+function closeSheet(){ $("#sheetBg").classList.remove("open"); $("#sheet").classList.remove("open"); document.body.classList.remove("sheet-open"); }
 $("#sheetBg").onclick = closeSheet;
 document.addEventListener("keydown", e=>{ if (e.key==="Escape") closeSheet(); });
 
@@ -884,26 +1112,91 @@ const monthAnim = () => { const s=$("#v-"+S.view); s.classList.remove("enter"); 
 $("#prevM").onclick = () => { S.cur = shiftMonth(S.cur,-1); render(); monthAnim(); };
 $("#nextM").onclick = () => { S.cur = shiftMonth(S.cur,1); render(); monthAnim(); };
 $("#fab").onclick = () => openForm(null);
-$$("#filterRow .chip").forEach(c=>c.onclick=()=>{ S.filter=c.dataset.f; $$("#filterRow .chip").forEach(x=>x.classList.toggle("on",x===c)); renderMonth(); });
-$$("nav.tabs button").forEach(b=>b.onclick=()=>{
-  S.view = b.dataset.v;
-  $$("nav.tabs button").forEach(x=>x.classList.toggle("on",x===b));
-  ["mese","grafici","salvadanai","impostazioni"].forEach(v=>{ const s=$("#v-"+v); s.classList.toggle("hidden", v!==S.view); s.classList.remove("enter"); if (v===S.view){ void s.offsetWidth; s.classList.add("enter"); } });
-  $(".monthnav").style.visibility = (S.view==="mese"||S.view==="grafici") ? "visible" : "hidden";
+$("#pjBack").onclick = () => { if (history.state && history.state.v==="progetto") history.back(); else goView("home"); };
+$("#pjEdit").onclick = () => openProjectForm(pjOf(S.pj));
+$("#pjSaveBtn").onclick = () => { const pj=pjOf(S.pj); openForm(null, {tipo:"risparmio", categoria:pj.pigId}); };
+$("#pjSpendBtn").onclick = () => openForm(null, {tipo:"uscita", progetto:S.pj});
+window.addEventListener("popstate", () => { if ($("#sheet").classList.contains("open")) closeSheet(); if (S.view==="progetto") goView("home"); });
+$$("#filterRow .chip").forEach(c=>c.onclick=()=>{ S.filter=c.dataset.f; S.cat=null; $$("#filterRow .chip").forEach(x=>x.classList.toggle("on",x===c)); renderMonth(); });
+function goView(v){
+  S.view = v;
+  const tab = v==="progetto" ? "home" : v;
+  $$("nav.tabs button").forEach(x=>x.classList.toggle("on", x.dataset.v===tab));
+  ["home","progetto","mese","grafici","salvadanai","impostazioni"].forEach(n=>{ const s=$("#v-"+n); s.classList.toggle("hidden", n!==v); s.classList.remove("enter"); if (n===v){ void s.offsetWidth; s.classList.add("enter"); } });
+  $("header.top").style.display = (v==="mese"||v==="grafici") ? "" : "none";
   window.scrollTo(0,0); render();
-});
+}
+$$("nav.tabs button").forEach(b=>b.onclick=()=>{ if (S.view==="progetto" && history.state && history.state.v==="progetto") history.replaceState(null,""); goView(b.dataset.v); });
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", ()=>{ if (S.view==="grafici") renderCharts(); });
+
+/* ---------- Calcolatrice ---------- */
+(function(){
+  const box=$("#calc"), ex=$("#cEx"), rs=$("#cRs");
+  let expr="", lastRes=null;
+  const show = s => s.replace(/\*/g,"×").replace(/\//g,"÷").replace(/-/g,"−").replace(/\./g,",");
+  function evaluate(e){
+    const t = e.replace(/,/g,".").match(/\d*\.?\d+%?|[+\-*/]/g); if(!t) return null;
+    const nums=[], ops=[], prec={"+":1,"-":1,"*":2,"/":2};
+    const apply=()=>{ const b=nums.pop(), a=nums.pop(), o=ops.pop(); if(a===undefined||b===undefined) throw 0; nums.push(o==="+"?a+b:o==="-"?a-b:o==="*"?a*b:(b===0?NaN:a/b)); };
+    let expectNum=true, neg=false;
+    for (const tok of t){
+      if (/[+\-*/]/.test(tok)){
+        if (expectNum){ if(tok==="-"){ neg=!neg; continue; } else throw 0; }
+        while (ops.length && prec[ops[ops.length-1]]>=prec[tok]) apply();
+        ops.push(tok); expectNum=true;
+      } else {
+        let v=parseFloat(tok); if (tok.endsWith("%")){ v=v/100; const o=ops[ops.length-1]; if((o==="+"||o==="-") && nums.length) v=nums[nums.length-1]*v; }
+        nums.push(neg?-v:v); neg=false; expectNum=false;
+      }
+    }
+    while (ops.length) apply();
+    const r=nums.pop(); return isFinite(r)?Math.round(r*100)/100:null;
+  }
+  const fmtN = n => n===null ? "Errore" : n.toLocaleString("it-IT",{maximumFractionDigits:2});
+  function paint(){ ex.textContent = show(expr); const r = expr && /[\d%]$/.test(expr) ? evaluate(expr) : null; rs.textContent = r!==null ? fmtN(r) : (lastRes!==null && !expr ? fmtN(lastRes) : (expr?rs.textContent:"0")); }
+  function key(k){
+    if (k==="C"){ expr=""; lastRes=null; }
+    else if (k==="B"){ expr=expr.slice(0,-1); }
+    else if (k==="="){ const r=evaluate(expr); if(r!==null){ lastRes=r; expr=String(r).replace(".",","); ex.textContent=""; rs.textContent=fmtN(r); rs.classList.remove("pop"); void rs.offsetWidth; rs.classList.add("pop"); return; } }
+    else if ("+-*/".includes(k)){ if(!expr && lastRes!==null) expr=String(lastRes).replace(".",","); if(!expr && k!=="-") return; expr = /[+\-*/]$/.test(expr) ? expr.slice(0,-1)+k : expr+k; }
+    else if (k===","){ const seg=expr.split(/[+\-*/]/).pop(); if(seg.includes(",")) return; expr += seg===""?"0,":","; }
+    else if (k==="%"){ if(/\d$/.test(expr)) expr+="%"; }
+    else { if (/%$/.test(expr)) return; expr+=k; }
+    paint();
+  }
+  $$("#cKeys button").forEach(b=>b.onclick=()=>{ key(b.dataset.k); if(navigator.vibrate) try{navigator.vibrate(8);}catch(e){} });
+  function toggle(open){ box.classList.toggle("hidden", open===undefined ? !box.classList.contains("hidden") : !open); }
+  $("#calcBtn").onclick=()=>toggle();
+  $("#calcX").onclick=()=>toggle(false);
+  $("#calcUse").onclick=()=>{
+    const r = expr ? evaluate(expr) : lastRes; if (r===null || r===undefined){ toast("Nessun risultato da usare"); return; }
+    const target = document.querySelector("#sheet.open #fmI, #sheet.open #fxI, #sheet.open #pgO");
+    const val = String(Math.abs(r)).replace(".",",");
+    if (target){ target.value = val; target.classList.remove("pop"); void target.offsetWidth; target.classList.add("pop"); toast("Importo inserito"); }
+    else { openForm(null); setTimeout(()=>{ const i=$("#fmI"); if(i) i.value=val; },50); }
+  };
+  // trascinabile dall'intestazione
+  const hd=$("#calcHd"); let sx=0, sy=0, bx=0, by=0, drag=false;
+  hd.addEventListener("pointerdown", e=>{ if(e.target.closest("button")) return; drag=true; const r=box.getBoundingClientRect(); sx=e.clientX; sy=e.clientY; bx=r.left; by=r.top; hd.setPointerCapture(e.pointerId); hd.style.cursor="grabbing"; });
+  hd.addEventListener("pointermove", e=>{ if(!drag) return; const w=box.offsetWidth, h2=box.offsetHeight;
+    const x=Math.min(window.innerWidth-w-4, Math.max(4, bx+e.clientX-sx)), y=Math.min(window.innerHeight-h2-4, Math.max(4, by+e.clientY-sy));
+    box.style.left=x+"px"; box.style.top=y+"px"; box.style.right="auto"; });
+  hd.addEventListener("pointerup", ()=>{ drag=false; hd.style.cursor=""; });
+  document.addEventListener("keydown", e=>{ if(box.classList.contains("hidden") || /INPUT|SELECT|TEXTAREA/.test(document.activeElement?.tagName||"")) return;
+    const m={"Enter":"=","Backspace":"B","Escape":"C",".":",",",":","}; const k=m[e.key]||e.key; if(/^[0-9+\-*/%,=CB]$/.test(k)){ e.preventDefault(); key(k); } });
+})();
 
 /* ---------- Avvio ---------- */
 (async function start(){
-  render();
+  goView("home");
   await Store.init();
   const data = await Store.loadAll();
   if (data.settings) S.settings = Object.assign(structuredClone(DEFAULT_SETTINGS), data.settings);
   applySkin(S.settings.tema || "sobrio");
   S.months = data.months || {};
+  S.settings.progetti ||= [];
   renderStoreInfo();
-  render();
+  goView("home");
 })();
 if ("serviceWorker" in navigator && location.protocol==="https:") navigator.serviceWorker.register("sw.js").catch(()=>{});
 })();
