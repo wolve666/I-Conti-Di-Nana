@@ -294,6 +294,46 @@ body.sheet-open .calcfab{bottom:auto;top:calc(12px + env(safe-area-inset-top,0px
 .plan .pi.done .ck{background:var(--primary);border-color:var(--primary)}
 .plan .sum{display:flex;justify-content:space-between;font-weight:900;padding-top:10px;border-top:2px solid var(--ink);margin-top:4px}
 .pjtag{display:inline-block;font-size:.68rem;font-weight:900;border-radius:6px;padding:0 6px;margin-left:4px;background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}
+
+/* ---------- v2: Conticini ---------- */
+.cc-hero .big{margin-bottom:10px}
+.cc-diff{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;font-weight:900;font-size:.85rem}
+.cc-diff.ok{background:color-mix(in srgb,var(--in) 14%,transparent);color:var(--in)}
+.cc-diff.ko{background:color-mix(in srgb,#D9483B 14%,transparent);color:#C2372F}
+.cc-diff.zero{background:var(--surface-2);color:var(--ink-2)}
+.sheetx{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+.sheetx .gh{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--surface-2);border-bottom:1px solid var(--line);font-weight:900;font-size:.88rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-2)}
+.sheetx .gh .num{color:var(--ink);letter-spacing:0}
+.vr{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px;padding:9px 10px 9px 14px;border-bottom:1px solid var(--line)}
+.vr:last-child{border-bottom:0}
+.vr .nm{min-width:0;background:none;border:0;text-align:left;padding:4px 0}
+.vr .nm b{display:block;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vr .nm small{color:var(--ink-2);font-size:.75rem}
+.vr .val{font-weight:900;min-width:84px;text-align:right}
+.vr .pm{display:flex;gap:4px}
+.vr .pm button{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:var(--surface);font-weight:900;font-size:1.1rem;color:var(--ink)}
+.vr .pm button.plus{background:var(--primary);color:var(--primary-ink);border-color:var(--primary)}
+.vr.flash{animation:fresh 1.2s ease-out}
+.pjbadge{display:inline-block;font-size:.66rem;font-weight:900;border-radius:6px;padding:0 6px;margin-left:5px;background:var(--primary);color:var(--primary-ink);vertical-align:1px}
+.cc-sum{margin-top:12px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:12px 14px;box-shadow:var(--shadow)}
+.cc-sum .l{display:flex;justify-content:space-between;padding:4px 0;font-weight:800}
+.cc-sum .l.tot{border-top:2px solid var(--ink);margin-top:6px;padding-top:9px;font-weight:900;font-size:1.08rem}
+.gearbtn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;color:var(--ink-2);margin-left:auto}
+.installbtn{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;background:var(--primary);color:var(--primary-ink);font-weight:900;font-size:.78rem;padding:6px 12px}
+/* barra schede con cerchio centrale */
+nav.tabs{overflow:visible}
+nav.tabs .in{grid-template-columns:repeat(5,1fr) !important;align-items:end}
+nav.tabs button.main{position:relative}
+nav.tabs button.main .circ{width:62px;height:62px;border-radius:50%;margin-top:-30px;background:var(--primary);color:var(--primary-ink);display:grid;place-items:center;box-shadow:0 8px 20px color-mix(in srgb,var(--primary) 45%,transparent),0 0 0 5px var(--surface);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+nav.tabs button.main .circ svg{width:30px;height:30px}
+nav.tabs button.main.on .circ{transform:scale(1.08)}
+nav.tabs button.main:not(.on) .circ{background:var(--surface);color:var(--primary);box-shadow:0 6px 16px rgba(0,0,0,.12),0 0 0 5px var(--surface),inset 0 0 0 2.5px var(--primary)}
+nav.tabs button.main{color:var(--ink)}
+/* scorrimento tra schede */
+section.slide-l{animation:slideL .28s cubic-bezier(.2,.8,.2,1)}
+section.slide-r{animation:slideR .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes slideL{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@keyframes slideR{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -365,7 +405,7 @@ body.sheet-open .calcfab{bottom:auto;top:calc(12px + env(safe-area-inset-top,0px
 </g><g class="sk-s"><use href="#hibS" x="30" y="50" width="120" height="120" transform="rotate(-15 90 110)" style="color:#F1F0EC"/></g></svg>
 <svg class="flora ml" viewBox="0 0 100 100" aria-hidden="true"><use href="#hib" x="5" y="5" width="90" height="90"/></svg>
 <div class="wrap">
-  <div class="brandrow"><div class="brand">I conti di Nana</div><span class="ver">v1.5</span><span class="status" id="status">Caricamento…</span></div>
+  <div class="brandrow"><div class="brand">I conti di Nana</div><span class="ver">v2.0</span><span class="status" id="status">Caricamento…</span><button class="installbtn hidden" id="installBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Installa</button><button class="gearbtn" id="gearBtn" aria-label="Impostazioni"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></button></div>
   <header class="top">
     <div class="monthnav">
       <button class="iconbtn" id="prevM" aria-label="Mese precedente">‹</button>
@@ -373,6 +413,20 @@ body.sheet-open .calcfab{bottom:auto;top:calc(12px + env(safe-area-inset-top,0px
       <button class="iconbtn" id="nextM" aria-label="Mese successivo">›</button>
     </div>
   </header>
+
+  <!-- CONTICINI -->
+  <section id="v-conticini" class="hidden">
+    <div class="hero cc-hero" id="ccHero" style="cursor:pointer">
+      <svg class="mini" viewBox="0 0 100 100" aria-hidden="true"><use class="sk-f" href="#hib" width="100" height="100"/><use class="sk-s" href="#hibS" width="100" height="100" style="color:#F2F1EC"/></svg>
+      <div class="lbl">Disponibilità sul conto · tocca per aggiornare</div>
+      <div class="big num" id="ccDisp">0,00 €</div>
+      <span class="cc-diff zero" id="ccDiff">—</span>
+    </div>
+    <div class="sheetx" id="ccSpese" style="margin-top:14px"></div>
+    <div class="sheetx" id="ccInv" style="margin-top:12px"></div>
+    <div class="cc-sum" id="ccSum"></div>
+    <button class="btn ghost" id="ccAdd" style="width:100%;margin-top:12px">Aggiungi voce</button>
+  </section>
 
   <!-- HOME PROGETTI -->
   <section id="v-home">
@@ -388,18 +442,20 @@ body.sheet-open .calcfab{bottom:auto;top:calc(12px + env(safe-area-inset-top,0px
     </div>
     <div class="hero">
       <svg class="mini" viewBox="0 0 100 100" aria-hidden="true"><use class="sk-f" href="#hib" width="100" height="100"/><use class="sk-s" href="#hibS" width="100" height="100" style="color:#F2F1EC"/></svg>
-      <div class="lbl" id="pjLbl">Speso finora</div>
-      <div class="big num" id="pjSpent">0,00 €</div>
+      <div class="lbl" id="pjLbl">Fondo del progetto</div>
+      <div class="big num" id="pjFund">0,00 €</div>
       <div class="scale" id="pjScale" aria-hidden="true"></div>
       <div class="legend">
+        <div><span class="dot" style="background:var(--save)"></span>Versato<b class="num" id="pjIn">0</b></div>
+        <div><span class="dot" style="background:var(--out)"></span>Speso<b class="num" id="pjSpent">0</b></div>
         <div><span class="dot" style="background:var(--ink-2)"></span>Budget<b class="num" id="pjBudget">—</b></div>
-        <div><span class="dot" style="background:var(--save)"></span>Messi da parte<b class="num" id="pjSaved">0</b></div>
-        <div><span class="dot" style="background:var(--in)"></span>Da spendere<b class="num" id="pjLeft">—</b></div>
       </div>
     </div>
+    <div id="pjLink"></div>
     <div class="btnrow">
-      <button class="btn small" id="pjSaveBtn">Metti da parte</button>
+      <button class="btn small" id="pjAddBtn">+ Aggiungi fondi</button>
       <button class="btn ghost small" id="pjSpendBtn">Registra spesa</button>
+      <button class="btn ghost small" id="pjTakeBtn">− Togli</button>
     </div>
     <h2>Spese previste</h2>
     <div class="card plan" id="pjPlan"></div>
@@ -469,6 +525,7 @@ body.sheet-open .calcfab{bottom:auto;top:calc(12px + env(safe-area-inset-top,0px
     <div class="card" id="catOutSet"></div>
     <h2>Categorie di entrata</h2>
     <div class="card" id="catInSet"></div>
+    <div id="installCard" class="hidden"><h2>Installazione</h2><div class="card"><p class="muted" style="margin-top:0">Installa l'app sul telefono: si apre dalla sua icona, a schermo intero.</p><button class="btn" id="installBtn2">Installa app</button></div></div>
     <h2>Backup</h2>
     <div class="card">
       <p class="muted" style="margin-top:0">Esporta tutti i dati per tenerne una copia, o in CSV per aprirli con Excel.</p>
@@ -498,11 +555,11 @@ body.sheet-open .calcfab{bottom:auto;top:calc(12px + env(safe-area-inset-top,0px
 </div>
 
 <nav class="tabs"><div class="in">
-  <button data-v="home" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2.5"/><rect x="13" y="3" width="8" height="8" rx="2.5"/><rect x="3" y="13" width="8" height="8" rx="2.5"/><rect x="13" y="13" width="8" height="8" rx="2.5"/></svg>Progetti</button>
   <button data-v="mese"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Mese</button>
+  <button data-v="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2.5"/><rect x="13" y="3" width="8" height="8" rx="2.5"/><rect x="3" y="13" width="8" height="8" rx="2.5"/><rect x="13" y="13" width="8" height="8" rx="2.5"/></svg>Progetti</button>
+  <button data-v="conticini" class="main on"><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 8.6a3.6 3.6 0 1 0 0 6.8M8 11h5M8 13.4h5"/></svg></span>Conticini</button>
   <button data-v="grafici"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Grafici</button>
   <button data-v="salvadanai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 11c0-3.3-3.1-6-7-6S5 7.7 5 11c0 1.9 1 3.6 2.6 4.7L8 19h3v-2h2v2h3l.5-3.3A6 6 0 0 0 19 11Z"/><path d="M19 10h2v3h-2M10 5.3 9 3"/></svg>Risparmi</button>
-  <button data-v="impostazioni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>Impostazioni</button>
 </div></nav>
 
 <div class="sheet-bg" id="sheetBg"></div>
@@ -573,6 +630,7 @@ const DEFAULT_SETTINGS = {
   catIn:["Stipendio","Extra","Rimborsi","Altro"],
   pigs:[{id:"emergenze",nome:"Fondo emergenze",obiettivo:0}],
   progetti:[],
+  conticini:{disponibilita:0, voci:[]},
   fixed:[]
 };
 
@@ -660,14 +718,18 @@ const pigName = id => (S.settings.pigs.find(p=>p.id===id)||{nome:"Salvadanaio el
 const pjOf = id => S.settings.progetti.find(p=>p.id===id);
 const pjName = id => (pjOf(id)||{nome:"Progetto eliminato"}).nome;
 function pjStats(pj){
-  const movs = Object.values(S.months).flatMap(m=>m.movimenti).filter(m=>m.progetto===pj.id && m.tipo!=="risparmio");
-  const spent = movs.reduce((a,m)=>a+(m.tipo==="uscita"?m.importo:-m.importo),0);
-  const saved = pigTotals()[pj.pigId]||0;
+  const mv = pj.movimenti||[];
+  const versato = mv.filter(m=>m.tipo==="versamento").reduce((a,m)=>a+m.importo,0);
+  const tolto = mv.filter(m=>m.tipo==="prelievo").reduce((a,m)=>a+m.importo,0);
+  const spent = mv.filter(m=>m.tipo==="spesa").reduce((a,m)=>a+m.importo,0);
   const planned = (pj.previste||[]).filter(x=>!x.fatto).reduce((a,x)=>a+x.importo,0);
-  return {movs, spent, saved, planned, left: pj.budget>0 ? pj.budget-spent : null};
+  return {versato, tolto, spent, planned, fondo: Math.round((versato-tolto-spent)*100)/100};
 }
+const ccVoce = pjId => S.settings.conticini.voci.find(v=>v.progetto===pjId);
+const voceValue = v => v.progetto ? (pjOf(v.progetto) ? pjStats(pjOf(v.progetto)).fondo : 0) : v.importo;
 function render(){
   $("#monthTitle").textContent = monthName(S.cur);
+  if (S.view==="conticini") renderConticini();
   if (S.view==="home") renderHome();
   if (S.view==="progetto") renderProject();
   if (S.view==="mese") renderMonth();
@@ -905,89 +967,192 @@ function renderStoreInfo(){
 /* ---------- Form movimento ---------- */
 function parseNum(s){ s = String(s||"").trim().replace(/\s|€/g,""); if (s.includes(",")) s = s.replace(/\./g,"").replace(",","."); const n = parseFloat(s); return isFinite(n) ? Math.round(n*100)/100 : NaN; }
 
-/* ---------- Progetti ---------- */
+/* ---------- Conticini ---------- */
+function renderConticini(){
+  const C=S.settings.conticini;
+  const voci=C.voci;
+  const val=v=>voceValue(v);
+  const totS=voci.filter(v=>v.gruppo==="spese").reduce((a,v)=>a+val(v),0);
+  const totI=voci.filter(v=>v.gruppo!=="spese").reduce((a,v)=>a+val(v),0);
+  const tot=totS+totI, diff=Math.round((C.disponibilita-tot)*100)/100;
+  animateNum($("#ccDisp"), C.disponibilita);
+  const d=$("#ccDiff");
+  d.className="cc-diff "+(Math.abs(diff)<0.005?"zero":diff>0?"ok":"ko");
+  d.textContent = Math.abs(diff)<0.005 ? "Tutto assegnato" : diff>0 ? fmt(diff)+" da assegnare" : fmt(-diff)+" oltre la disponibilità";
+  const rows=(g)=>{ const list=voci.filter(v=>(g==="spese")===(v.gruppo==="spese"));
+    const sum=list.reduce((a,v)=>a+val(v),0);
+    return `<div class="gh"><span>${g==="spese"?"Spese":"Investimenti e progetti"}</span><span class="num">${fmt(sum)}</span></div>` +
+      (list.length ? list.map(v=>`<div class="vr${v.id===S.ccFlash?" flash":""}" data-v="${v.id}"><button class="nm" data-open="${v.id}"><b>${esc(v.progetto?pjName(v.progetto):v.nome)}${v.progetto?'<span class="pjbadge">PROGETTO</span>':""}</b>${v.nota?`<small>${esc(v.nota)}</small>`:""}</button><span class="val num">${fmt(val(v))}</span><span class="pm"><button data-minus="${v.id}" aria-label="Togli">−</button><button class="plus" data-plus="${v.id}" aria-label="Aggiungi">+</button></span></div>`).join("")
+       : `<div class="empty" style="padding:16px">${g==="spese"?"Aggiungi le voci di spesa del mese: auto, casa, spesa…":"Aggiungi risparmi o collega i progetti aperti."}</div>`);
+  };
+  $("#ccSpese").innerHTML=rows("spese");
+  $("#ccInv").innerHTML=rows("inv");
+  S.ccFlash=null;
+  $("#ccSum").innerHTML=`<div class="l"><span>Totale spese</span><span class="num">${fmt(totS)}</span></div><div class="l"><span>Totale investimenti</span><span class="num">${fmt(totI)}</span></div>
+    <div class="l tot"><span>Totale assegnato</span><span class="num">${fmt(tot)}</span></div><div class="l"><span>Disponibilità sul conto</span><span class="num">${fmt(C.disponibilita)}</span></div>
+    <div class="l" style="color:${diff<-0.004?"#C2372F":diff>0.004?"var(--in)":"var(--ink-2)"}"><span>Differenza</span><span class="num">${diff>0?"+":""}${fmt(diff)}</span></div>`;
+  $$("#v-conticini [data-plus]").forEach(b=>b.onclick=()=>openCcDelta(b.dataset.plus,+1));
+  $$("#v-conticini [data-minus]").forEach(b=>b.onclick=()=>openCcDelta(b.dataset.minus,-1));
+  $$("#v-conticini [data-open]").forEach(b=>b.onclick=()=>openVoce(b.dataset.open));
+}
+function openDisp(){
+  const C=S.settings.conticini;
+  openSheet(`<h3>Disponibilità sul conto</h3><p class="muted" style="margin-top:-6px">Quanto c'è oggi sul conto corrente.</p>
+    <div class="field"><label for="ccI">Importo</label><input id="ccI" class="amount-in num" inputmode="decimal" value="${C.disponibilita?String(C.disponibilita).replace(".",","):""}" placeholder="0,00"></div>
+    <div class="actions"><button class="btn" id="ccOk">Salva</button></div>`);
+  setTimeout(()=>$("#ccI").select(),260);
+  $("#ccOk").onclick=()=>{ const v=parseNum($("#ccI").value); if(!isFinite(v)){ $("#ccI").focus(); return; } C.disponibilita=v; saveSettings(); closeSheet(); render(); toast("Disponibilità aggiornata"); };
+}
+function openCcDelta(id, sign){
+  const v=S.settings.conticini.voci.find(x=>x.id===id); if(!v) return;
+  const name=v.progetto?pjName(v.progetto):v.nome;
+  openSheet(`<h3>${sign>0?"Aggiungi a":"Togli da"} ${esc(name)}</h3><p class="muted" style="margin-top:-6px">Ora ${fmt(voceValue(v))}${v.progetto?" · si aggiorna anche il progetto":""}</p>
+    <div class="field"><label for="ccI">Importo</label><input id="ccI" class="amount-in num" inputmode="decimal" placeholder="0,00"></div>
+    ${v.progetto?`<div class="field"><label for="ccN">Nota</label><input id="ccN" placeholder="Facoltativa"></div>`:""}
+    <div class="actions"><button class="btn" id="ccOk">${sign>0?"Aggiungi":"Togli"}</button></div>`);
+  setTimeout(()=>$("#ccI").focus(),260);
+  $("#ccOk").onclick=()=>{
+    const a=parseNum($("#ccI").value); if(!(a>0)){ $("#ccI").focus(); toast("Inserisci un importo"); return; }
+    if (v.progetto){ const pj=pjOf(v.progetto); (pj.movimenti ||= []).push({id:uid(), tipo:sign>0?"versamento":"prelievo", importo:a, data:todayISO(), nota:($("#ccN").value||"").trim()||(sign>0?"Da Conticini":"Tolto da Conticini"), fonte:"conticini"}); }
+    else { v.importo=Math.round((v.importo+sign*a)*100)/100; (v.storia ||= []).unshift({data:todayISO(), delta:sign*a}); v.storia=v.storia.slice(0,30); }
+    S.ccFlash=v.id; saveSettings(); closeSheet(); render();
+    if (sign>0) heartBurst(document.querySelector(`.vr[data-v="${v.id}"] .val`)||$("#ccDisp"));
+    toast((sign>0?"+":"−")+fmt(a)+" · "+name);
+  };
+}
+function openVoce(id){
+  const C=S.settings.conticini, v=id?C.voci.find(x=>x.id===id):null, isNew=!v;
+  const linked=new Set(C.voci.filter(x=>x.progetto).map(x=>x.progetto));
+  const freePj=S.settings.progetti.filter(p=>!linked.has(p.id));
+  const st={gruppo:v?.gruppo||"spese", progetto:v?.progetto||""};
+  const draw=keep=>{
+    const nome=keep?($("#vN")?.value??""):(v?.nome||""), imp=keep?($("#ccI")?.value??""):(v&&!v.progetto&&v.importo?String(v.importo).replace(".",","):"");
+    openSheet(`<h3>${isNew?"Nuova voce":"Modifica voce"}</h3>
+      ${isNew&&freePj.length?`<div class="field"><label>Collega a un progetto (facoltativo)</label><div class="cats" id="vPj"><button data-p="" class="${!st.progetto?"on":""}">Nessuno</button>${freePj.map(p=>`<button data-p="${p.id}" class="${p.id===st.progetto?"on":""}">${esc(p.nome)}</button>`).join("")}</div></div>`:""}
+      ${st.progetto?`<p class="muted">L'importo di questa voce è il fondo del progetto <b>${esc(pjName(st.progetto))}</b>: quello che aggiungi o togli qui va al progetto, e viceversa.</p>`:`
+      <div class="field"><label for="vN">Nome</label><input id="vN" value="${esc(nome)}" placeholder="Auto, casa, spesa, vacanze…"></div>
+      <div class="field"><label for="ccI">${isNew?"Importo iniziale":"Importo"}</label><input id="ccI" class="num" inputmode="decimal" value="${esc(imp)}" placeholder="0,00"></div>`}
+      <div class="field"><label>Gruppo</label><div class="seg" style="grid-template-columns:1fr 1fr;margin-bottom:0"><button data-g="spese" class="${st.gruppo==="spese"?"on":""}">Spese</button><button data-g="inv" class="${st.gruppo!=="spese"?"on":""}">Investimenti</button></div></div>
+      ${!isNew&&!v.progetto&&v.storia?.length?`<div class="field"><label>Ultime modifiche</label><div class="list" style="box-shadow:none">${v.storia.slice(0,8).map(s=>`<div class="row" style="cursor:default;padding:8px 14px"><span class="t"><small>${esc(new Date(s.data+"T12:00:00").toLocaleDateString("it-IT",{day:"numeric",month:"short",year:"numeric"}))}</small></span><b class="num" style="color:${s.delta>=0?"var(--in)":"var(--out)"}">${s.delta>=0?"+":"−"}${fmt(Math.abs(s.delta))}</b></div>`).join("")}</div></div>`:""}
+      <div class="actions">${isNew?"":`<button class="btn danger" id="vDel">Elimina</button>`}<button class="btn" id="vOk">${isNew?"Aggiungi voce":"Salva"}</button></div>`);
+    $$("#vPj button").forEach(b=>b.onclick=()=>{ st.progetto=b.dataset.p; if(st.progetto) st.gruppo="inv"; draw(true); });
+    $$("#sheetBody .seg button").forEach(b=>b.onclick=()=>{ st.gruppo=b.dataset.g; $$("#sheetBody .seg button").forEach(x=>x.classList.toggle("on",x===b)); });
+    $("#vOk").onclick=()=>{
+      if (st.progetto){
+        if (isNew) C.voci.push({id:uid(), progetto:st.progetto, gruppo:st.gruppo, nome:"", importo:0});
+        else v.gruppo=st.gruppo;
+      } else {
+        const n=$("#vN").value.trim(), a=parseNum($("#ccI").value)||0; if(!n){ $("#vN").focus(); return; }
+        if (isNew) C.voci.push({id:uid(), nome:n, gruppo:st.gruppo, importo:a, storia:a?[{data:todayISO(),delta:a}]:[]});
+        else { if (a!==v.importo){ (v.storia ||= []).unshift({data:todayISO(),delta:Math.round((a-v.importo)*100)/100}); } Object.assign(v,{nome:n, gruppo:st.gruppo, importo:a}); }
+      }
+      saveSettings(); closeSheet(); render(); toast(isNew?"Voce aggiunta":"Voce salvata");
+    };
+    const del=$("#vDel"); if(del) del.onclick=()=>{ if(!confirm(v.progetto?"Scollegare il progetto dai Conticini? Il progetto e i suoi soldi restano nella scheda Progetti.":"Eliminare questa voce?")) return; C.voci=C.voci.filter(x=>x.id!==v.id); saveSettings(); closeSheet(); render(); };
+  };
+  draw(false);
+}
+
+/* ---------- Progetti (conteggi separati dai conti del mese) ---------- */
 function renderHome(){
-  const t = totals(keyOf(todayISO()));
-  const wm = (op) => `<svg class="wm" viewBox="0 0 100 100" aria-hidden="true"><use class="sk-f" href="#hib" width="100" height="100"/><use class="sk-s" href="#hibS" width="100" height="100" style="color:#ECECE8"/></svg>`;
-  let html = `<button class="ptile wide" id="tMese" style="animation-delay:0ms">${wm()}<span class="kick">Conti del mese</span><b style="text-transform:capitalize">${esc(new Date().toLocaleDateString("it-IT",{month:"long",year:"numeric"}))}</b><span class="fig num" style="color:${t.rimasto<0?"var(--out)":"var(--ink)"}">${fmt(t.rimasto)} <small style="display:inline">rimasti · ${fmt(t.uscite)} di spese</small></span></button>`;
+  const wm = () => `<svg class="wm" viewBox="0 0 100 100" aria-hidden="true"><use class="sk-f" href="#hib" width="100" height="100"/><use class="sk-s" href="#hibS" width="100" height="100" style="color:#ECECE8"/></svg>`;
+  let html="";
   S.settings.progetti.forEach((pj,i)=>{
-    const st = pjStats(pj), pct = pj.budget>0 ? Math.min(100, st.spent/pj.budget*100) : 0;
-    html += `<button class="ptile" data-pj="${pj.id}" style="animation-delay:${(i+1)*50}ms">${wm()}<span class="kick">Progetto</span><b>${esc(pj.nome)}</b>
-      <span><span class="fig num">${fmt(st.spent)}</span><small>${pj.budget>0?"spesi su "+fmt(pj.budget):"spesi finora"}</small>
-      ${pj.budget>0?`<div class="bar"><span data-w="${pct.toFixed(1)}" style="width:0"></span></div>`:""}
-      ${st.saved?`<small style="margin-top:4px">${fmt(st.saved)} messi da parte</small>`:""}${pj.scadenza?`<small>entro il ${esc(new Date(pj.scadenza+"T12:00:00").toLocaleDateString("it-IT",{day:"numeric",month:"short",year:"numeric"}))}</small>`:""}</span></button>`;
+    const st=pjStats(pj), pct=pj.budget>0?Math.min(100,st.spent/pj.budget*100):0;
+    html+=`<button class="ptile" data-pj="${pj.id}" style="animation-delay:${i*50}ms">${wm()}<span class="kick">Progetto${ccVoce(pj.id)?" · Conticini":""}</span><b>${esc(pj.nome)}</b>
+      <span><span class="fig num">${fmt(st.fondo)}</span><small>nel fondo</small>
+      ${pj.budget>0?`<div class="bar"><span data-w="${pct.toFixed(1)}" style="width:0"></span></div><small>${fmt(st.spent)} spesi su ${fmt(pj.budget)}</small>`:(st.spent?`<small>${fmt(st.spent)} spesi</small>`:"")}
+      ${pj.scadenza?`<small>entro il ${esc(new Date(pj.scadenza+"T12:00:00").toLocaleDateString("it-IT",{day:"numeric",month:"short",year:"numeric"}))}</small>`:""}</span></button>`;
   });
-  html += `<button class="ptile add" id="tAdd"><span>+</span>Nuovo progetto</button>`;
-  $("#pGrid").innerHTML = html;
+  html+=`<button class="ptile add" id="tAdd"><span>+</span>Nuovo progetto</button>`;
+  $("#pGrid").innerHTML=html;
   requestAnimationFrame(()=>requestAnimationFrame(()=>$$("#pGrid .bar span[data-w]").forEach(s=>s.style.width=s.dataset.w+"%")));
-  $("#tMese").onclick = () => goView("mese");
-  $("#tAdd").onclick = () => openProjectForm(null);
+  $("#tAdd").onclick=()=>openProjectForm(null);
   $$("#pGrid [data-pj]").forEach(b=>b.onclick=()=>openProject(b.dataset.pj));
 }
-function openProject(id){ S.pj=id; history.pushState({v:"progetto"},""); goView("progetto"); }
+function openProject(id){ S.pj=id; goView("progetto"); }
 function renderProject(){
-  const pj = pjOf(S.pj); if (!pj){ goView("home"); return; }
-  const st = pjStats(pj);
-  $("#pjTitle").textContent = pj.nome;
-  $("#pjLbl").textContent = pj.descr ? "Speso finora · "+pj.descr : "Speso finora";
-  animateNum($("#pjSpent"), st.spent);
-  $("#pjBudget").textContent = pj.budget>0 ? fmt(pj.budget) : "—";
-  animateNum($("#pjSaved"), st.saved);
-  $("#pjLeft").textContent = st.left===null ? "—" : fmt(st.left);
-  const base = Math.max(pj.budget||0, st.spent, 1);
-  $("#pjScale").innerHTML = `<span style="width:${(Math.max(0,st.spent)/base*100).toFixed(1)}%;background:var(--out)"></span><span style="width:${(Math.min(st.saved, Math.max(0,base-st.spent))/base*100).toFixed(1)}%;background:var(--save)"></span>`;
-  // spese previste
-  const items = pj.previste||[];
-  $("#pjPlan").innerHTML = (items.length ? items.map(x=>`<div class="pi${x.fatto?" done":""}"><button class="ck" data-ck="${x.id}" aria-label="${x.fatto?"Fatta":"Segna come fatta"}">${x.fatto?"✓":""}</button><span class="t"><b>${esc(x.nome)}</b>${x.fatto?`<small class="muted">fatta</small>`:""}</span><b class="num">${fmt(x.importo)}</b><button class="x" data-delpi="${x.id}" aria-label="Elimina ${esc(x.nome)}">×</button></div>`).join("")
-      + `<div class="sum"><span>Ancora da spendere</span><span class="num">${fmt(st.planned)}</span></div>` : `<p class="muted" style="margin:0">Elenca qui cosa servirà: mobili, biglietti, lavori… e segnalo come fatto quando lo paghi.</p>`)
-    + `<div class="addline"><input id="piN" placeholder="Cosa serve" aria-label="Nuova spesa prevista"><input id="piI" class="num" inputmode="decimal" placeholder="€" style="max-width:90px" aria-label="Importo previsto"><button class="btn small" id="piAdd">Aggiungi</button></div>`;
-  const add = () => { const n=$("#piN").value.trim(), v=parseNum($("#piI").value); if(!n){ $("#piN").focus(); return; } if(!(v>0)){ $("#piI").focus(); return; }
-    (pj.previste ||= []).push({id:uid(), nome:n, importo:v, fatto:false}); saveSettings(); renderProject(); $("#piN").focus(); };
-  $("#piAdd").onclick = add; $("#piI").onkeydown = e => { if(e.key==="Enter") add(); };
+  const pj=pjOf(S.pj); if(!pj){ goView("home"); return; }
+  const st=pjStats(pj);
+  $("#pjTitle").textContent=pj.nome;
+  $("#pjLbl").textContent="Fondo del progetto"+(pj.descr?" · "+pj.descr:"");
+  const f=$("#pjFund"); animateNum(f, st.fondo); f.classList.toggle("neg", st.fondo<0);
+  animateNum($("#pjIn"), st.versato-st.tolto); animateNum($("#pjSpent"), st.spent);
+  $("#pjBudget").textContent=pj.budget>0?fmt(pj.budget):"—";
+  const base=Math.max(pj.budget||0, st.versato-st.tolto, st.spent, 1);
+  $("#pjScale").innerHTML=`<span style="width:${(st.spent/base*100).toFixed(1)}%;background:var(--out)"></span><span style="width:${(Math.max(0,st.fondo)/base*100).toFixed(1)}%;background:var(--save)"></span>`;
+  $("#pjLink").innerHTML = ccVoce(pj.id) ? `<p class="muted" style="margin:10px 2px 0">Collegato ai Conticini: ogni movimento del fondo aggiorna anche la voce.</p>` : `<p class="muted" style="margin:10px 2px 0">Puoi collegarlo ai Conticini da lì con "Aggiungi voce".</p>`;
+  const items=pj.previste||[];
+  $("#pjPlan").innerHTML=(items.length?items.map(x=>`<div class="pi${x.fatto?" done":""}"><button class="ck" data-ck="${x.id}" aria-label="${x.fatto?"Fatta":"Segna come fatta"}">${x.fatto?"✓":""}</button><span class="t"><b>${esc(x.nome)}</b>${x.fatto?`<small class="muted">fatta</small>`:""}</span><b class="num">${fmt(x.importo)}</b><button class="x" data-delpi="${x.id}" aria-label="Elimina ${esc(x.nome)}">×</button></div>`).join("")
+      +`<div class="sum"><span>Ancora da spendere</span><span class="num">${fmt(st.planned)}</span></div>`:`<p class="muted" style="margin:0">Elenca qui cosa servirà, e segnalo come fatto quando lo paghi: la spesa esce dal fondo del progetto.</p>`)
+    +`<div class="addline"><input id="piN" placeholder="Cosa serve" aria-label="Nuova spesa prevista"><input id="piI" class="num" inputmode="decimal" placeholder="€" style="max-width:90px" aria-label="Importo previsto"><button class="btn small" id="piAdd">Aggiungi</button></div>`;
+  const add=()=>{ const n=$("#piN").value.trim(), v=parseNum($("#piI").value); if(!n){ $("#piN").focus(); return; } if(!(v>0)){ $("#piI").focus(); return; } (pj.previste ||= []).push({id:uid(),nome:n,importo:v,fatto:false}); saveSettings(); renderProject(); $("#piN").focus(); };
+  $("#piAdd").onclick=add; $("#piI").onkeydown=e=>{ if(e.key==="Enter") add(); };
   $$("#pjPlan [data-ck]").forEach(b=>b.onclick=()=>{ const x=items.find(i=>i.id===b.dataset.ck);
-    if (x.fatto){ if(!confirm("Rimettere tra le spese da fare? Il movimento già registrato resta.")) return; x.fatto=false; x.movId=null; saveSettings(); renderProject(); }
-    else openForm(null, {tipo:"uscita", importo:x.importo, nota:x.nome, progetto:pj.id, previstaId:x.id}); });
-  $$("#pjPlan [data-delpi]").forEach(b=>b.onclick=()=>{ pj.previste = items.filter(i=>i.id!==b.dataset.delpi); saveSettings(); renderProject(); });
-  // movimenti del progetto (anche i risparmi del suo salvadanaio)
-  const all = Object.values(S.months).flatMap(m=>m.movimenti).filter(m=>m.progetto===pj.id || (m.tipo==="risparmio" && m.categoria===pj.pigId)).sort((a,b)=>b.data.localeCompare(a.data)||(b.id>a.id?1:-1));
-  const el = $("#pjList");
-  if (!all.length){ el.innerHTML = `<div class="empty">Ancora nessun movimento.<br>Registra una spesa o metti da parte qualcosa per questo progetto.</div>`; return; }
-  el.innerHTML = all.map(m=>{
-    const color = m.tipo==="entrata"?"var(--in)":m.tipo==="uscita"?"var(--out)":"var(--save)";
-    const sign = m.tipo==="entrata"?"+":m.tipo==="uscita"?"−":(m.importo<0?"↩ ":"→ ");
-    const lab = m.tipo==="risparmio" ? (m.importo<0?"Prelievo":"Messo da parte") : m.categoria;
-    return `<button class="row${m.id===freshId?" fresh":""}" data-id="${m.id}" data-k="${keyOf(m.data)}"><span class="badge" style="background:color-mix(in srgb, ${color} 15%, transparent);color:${color}">${esc((lab||"?").charAt(0).toUpperCase())}</span><span class="t"><b>${esc(m.nota||lab)}</b><small>${esc(lab)} · ${esc(new Date(m.data+"T12:00:00").toLocaleDateString("it-IT",{day:"numeric",month:"short",year:"numeric"}))}</small></span><span class="amt num" style="color:${color}">${sign}${fmt(Math.abs(m.importo))}</span></button>`;
-  }).join("");
-  freshId = null;
-  el.querySelectorAll(".row").forEach(r=>r.onclick=()=>openForm((S.months[r.dataset.k]?.movimenti||[]).find(m=>m.id===r.dataset.id)));
+    if (x.fatto){ if(!confirm("Rimettere tra le spese da fare? La spesa già registrata resta.")) return; x.fatto=false; x.movId=null; saveSettings(); renderProject(); }
+    else openPjMov(pj, null, {tipo:"spesa", importo:x.importo, nota:x.nome, previstaId:x.id}); });
+  $$("#pjPlan [data-delpi]").forEach(b=>b.onclick=()=>{ pj.previste=items.filter(i=>i.id!==b.dataset.delpi); saveSettings(); renderProject(); });
+  const mv=(pj.movimenti||[]).slice().sort((a,b)=>b.data.localeCompare(a.data)||(b.id>a.id?1:-1)), el=$("#pjList");
+  if(!mv.length){ el.innerHTML=`<div class="empty">Ancora nessun movimento.<br>Aggiungi fondi al progetto o registra una spesa.</div>`; return; }
+  const L={versamento:["Fondi aggiunti","var(--save)","+"],prelievo:["Fondi tolti","var(--ink-2)","−"],spesa:["Spesa","var(--out)","−"]};
+  el.innerHTML=mv.map(m=>{ const [lab,col,sg]=L[m.tipo]; return `<button class="row${m.id===freshId?" fresh":""}" data-id="${m.id}"><span class="badge" style="background:color-mix(in srgb, ${col} 15%, transparent);color:${col}">${sg}</span><span class="t"><b>${esc(m.nota||lab)}</b><small>${esc(lab)}${m.categoria&&m.tipo==="spesa"?" · "+esc(m.categoria):""}${m.fonte==="conticini"?" · da Conticini":""} · ${esc(new Date(m.data+"T12:00:00").toLocaleDateString("it-IT",{day:"numeric",month:"short",year:"numeric"}))}</small></span><span class="amt num" style="color:${col}">${sg}${fmt(m.importo)}</span></button>`; }).join("");
+  freshId=null;
+  el.querySelectorAll(".row").forEach(r=>r.onclick=()=>openPjMov(pj, mv.find(m=>m.id===r.dataset.id)));
+}
+function openPjMov(pj, mov, preset){
+  const isNew=!mov;
+  const st={tipo:mov?.tipo||preset?.tipo||"versamento", categoria:mov?.categoria||S.settings.catOut[0]||""};
+  const imp0=mov?String(mov.importo).replace(".",","):(preset?.importo?String(preset.importo).replace(".",","):""), nota0=mov?.nota||preset?.nota||"", data0=mov?.data||todayISO();
+  const draw=keep=>{
+    const imp=keep?$("#pmI").value:imp0, nota=keep?$("#pmN").value:nota0, data=keep?$("#pmD").value:data0;
+    openSheet(`<h3>${esc(pj.nome)}</h3>
+      <div class="seg"><button data-t="versamento" class="${st.tipo==="versamento"?"on":""}">Aggiungi fondi</button><button data-t="spesa" class="${st.tipo==="spesa"?"on":""}">Spesa</button><button data-t="prelievo" class="${st.tipo==="prelievo"?"on":""}">Togli fondi</button></div>
+      <div class="field"><label for="pmI">Importo</label><input id="pmI" class="amount-in num" inputmode="decimal" placeholder="0,00" value="${esc(imp)}"></div>
+      ${st.tipo==="spesa"?`<div class="field"><label>Categoria</label><div class="cats" id="pmC">${S.settings.catOut.map(c=>`<button data-c="${esc(c)}" class="${c===st.categoria?"on":""}">${esc(c)}</button>`).join("")}</div></div>`:""}
+      <div class="two"><div class="field"><label for="pmD">Data</label><input id="pmD" type="date" value="${esc(data)}"></div><div class="field"><label for="pmN">Nota</label><input id="pmN" placeholder="Facoltativa" value="${esc(nota)}"></div></div>
+      <p class="muted" style="margin:0 0 10px">Resta tutto dentro il progetto: i conti del mese non cambiano.${ccVoce(pj.id)?" La voce nei Conticini si aggiorna da sola.":""}</p>
+      <div class="actions">${isNew?"":`<button class="btn danger" id="pmDel">Elimina</button>`}<button class="btn" id="pmOk">${isNew?"Registra":"Salva"}</button></div>`);
+    $$("#sheetBody .seg button").forEach(b=>b.onclick=()=>{ st.tipo=b.dataset.t; draw(true); });
+    $$("#pmC button").forEach(b=>b.onclick=()=>{ st.categoria=b.dataset.c; $$("#pmC button").forEach(x=>x.classList.toggle("on",x===b)); });
+    if (isNew&&!keep&&!preset?.importo) setTimeout(()=>$("#pmI").focus(),260);
+    $("#pmOk").onclick=()=>{
+      const a=parseNum($("#pmI").value); if(!(a>0)){ $("#pmI").focus(); toast("Inserisci un importo"); return; }
+      const rec={id:mov?.id||uid(), tipo:st.tipo, importo:a, data:$("#pmD").value||todayISO(), nota:$("#pmN").value.trim()};
+      if (st.tipo==="spesa") rec.categoria=st.categoria;
+      if (mov?.fonte) rec.fonte=mov.fonte;
+      pj.movimenti ||= [];
+      const i=pj.movimenti.findIndex(m=>m.id===rec.id); if(i>=0) pj.movimenti[i]=rec; else pj.movimenti.push(rec);
+      if (preset?.previstaId){ const x=(pj.previste||[]).find(p=>p.id===preset.previstaId); if(x){ x.fatto=true; x.movId=rec.id; } }
+      freshId=rec.id; saveSettings(); closeSheet(); render();
+      if (rec.tipo==="versamento" && isNew){ petalRain(22); toast("+"+fmt(a)+" nel fondo"); } else toast(isNew?"Registrato":"Modificato");
+    };
+    const del=$("#pmDel"); if(del) del.onclick=()=>{ if(!confirm("Eliminare questo movimento del progetto?")) return; pj.movimenti=pj.movimenti.filter(m=>m.id!==mov.id); (pj.previste||[]).forEach(x=>{ if(x.movId===mov.id){ x.fatto=false; x.movId=null; } }); saveSettings(); closeSheet(); render(); };
+  };
+  draw(false);
 }
 function openProjectForm(pj){
-  const isNew = !pj;
-  pj = pj ? {...pj} : {id:uid(), nome:"", budget:0, scadenza:"", descr:"", previste:[]};
+  const isNew=!pj;
+  pj=pj?{...pj}:{id:uid(),nome:"",budget:0,scadenza:"",descr:"",previste:[],movimenti:[]};
   openSheet(`<h3>${isNew?"Nuovo progetto":"Modifica progetto"}</h3>
-    <div class="field"><label for="pjN">Nome</label><input id="pjN" value="${esc(pj.nome)}" placeholder="Vacanze estive, cucina nuova, regali di Natale…"></div>
+    <div class="field"><label for="pjN">Nome</label><input id="pjN" value="${esc(pj.nome)}" placeholder="Viaggio a Londra, cucina nuova…"></div>
     <div class="two"><div class="field"><label for="pjB">Budget (facoltativo)</label><input id="pjB" class="num" inputmode="decimal" placeholder="0,00" value="${pj.budget?String(pj.budget).replace(".",","):""}"></div>
       <div class="field"><label for="pjD">Entro il (facoltativo)</label><input id="pjD" type="date" value="${esc(pj.scadenza||"")}"></div></div>
     <div class="field"><label for="pjT">Nota breve</label><input id="pjT" value="${esc(pj.descr||"")}" placeholder="Facoltativa"></div>
+    ${isNew?`<label class="switch" style="margin-bottom:14px"><span>Aggiungi anche ai Conticini</span><input type="checkbox" id="pjCC" checked></label>`:""}
     <div class="actions">${isNew?"":`<button class="btn danger" id="pjDel">Elimina</button>`}<button class="btn" id="pjOk">${isNew?"Crea progetto":"Salva"}</button></div>`);
   if (isNew) setTimeout(()=>$("#pjN").focus(),260);
-  $("#pjOk").onclick = () => {
+  $("#pjOk").onclick=()=>{
     const n=$("#pjN").value.trim(); if(!n){ $("#pjN").focus(); return; }
-    Object.assign(pj, {nome:n, budget:parseNum($("#pjB").value)||0, scadenza:$("#pjD").value||"", descr:$("#pjT").value.trim()});
-    if (!pj.pigId){ pj.pigId = "pj-"+pj.id; }
-    let pig = S.settings.pigs.find(p=>p.id===pj.pigId);
-    if (!pig){ pig = {id:pj.pigId, nome:n, obiettivo:pj.budget, progetto:pj.id}; S.settings.pigs.push(pig); }
-    else { pig.nome = n; pig.obiettivo = pj.budget; }
-    const i = S.settings.progetti.findIndex(x=>x.id===pj.id); if (i>=0) S.settings.progetti[i]=pj; else S.settings.progetti.push(pj);
-    saveSettings(); closeSheet();
-    if (isNew){ toast("Progetto creato"); heartBurst($("#tAdd")||$("#fab")); render(); } else { toast("Progetto salvato"); render(); }
+    Object.assign(pj,{nome:n, budget:parseNum($("#pjB").value)||0, scadenza:$("#pjD").value||"", descr:$("#pjT").value.trim()});
+    const i=S.settings.progetti.findIndex(x=>x.id===pj.id); if(i>=0) S.settings.progetti[i]=pj; else S.settings.progetti.push(pj);
+    if (isNew && $("#pjCC")?.checked) S.settings.conticini.voci.push({id:uid(), progetto:pj.id, gruppo:"inv", nome:"", importo:0});
+    saveSettings(); closeSheet(); render(); toast(isNew?"Progetto creato":"Progetto salvato");
   };
-  const d=$("#pjDel"); if (d) d.onclick = () => {
-    if (!confirm("Eliminare il progetto? Le spese registrate restano nei conti del mese; i soldi messi da parte restano nei Risparmi.")) return;
-    S.settings.progetti = S.settings.progetti.filter(x=>x.id!==pj.id);
-    Object.keys(S.months).forEach(k=>{ let ch=false; S.months[k].movimenti.forEach(m=>{ if(m.progetto===pj.id){ delete m.progetto; ch=true; } }); if(ch) saveMonth(k); });
-    const pig = S.settings.pigs.find(p=>p.id===pj.pigId); if (pig){ if(!(pigTotals()[pig.id])) S.settings.pigs = S.settings.pigs.filter(p=>p.id!==pig.id); else delete pig.progetto; }
-    saveSettings(); closeSheet(); toast("Progetto eliminato"); if (S.view==="progetto") goView("home"); else render();
+  const d=$("#pjDel"); if(d) d.onclick=()=>{
+    if(!confirm("Eliminare il progetto e il suo storico? Verrà tolto anche dai Conticini.")) return;
+    S.settings.progetti=S.settings.progetti.filter(x=>x.id!==pj.id);
+    S.settings.conticini.voci=S.settings.conticini.voci.filter(v=>v.progetto!==pj.id);
+    saveSettings(); closeSheet(); toast("Progetto eliminato"); if(S.view==="progetto") goView("home",{replace:true}); else render();
   };
 }
 
@@ -996,8 +1161,7 @@ function openForm(mov, preset){
   const st = {
     tipo: mov?.tipo || preset?.tipo || "uscita",
     categoria: mov?.categoria || preset?.categoria || "",
-    prelievo: mov ? mov.importo<0 : !!preset?.prelievo,
-    progetto: mov ? (mov.progetto||"") : (preset?.progetto ?? (S.view==="progetto" ? S.pj : ""))
+    prelievo: mov ? mov.importo<0 : !!preset?.prelievo
   };
   const curIsToday = keyOf(todayISO())===S.cur;
   const data0 = mov?.data || (curIsToday ? todayISO() : S.cur+"-01");
@@ -1019,7 +1183,6 @@ function openForm(mov, preset){
       ${st.tipo==="risparmio"?`<div class="seg" style="grid-template-columns:1fr 1fr"><button data-p="0" class="${!st.prelievo?"on":""}">Metto da parte</button><button data-p="1" class="${st.prelievo?"on":""}">Prelevo</button></div>`:""}
       <div class="field"><label>${st.tipo==="risparmio"?"Salvadanaio":"Categoria"}</label>
         <div class="cats" id="fmCats">${opts.length?opts.map(o=>`<button data-c="${esc(o.v)}" class="${o.v===st.categoria?"on":""}">${esc(o.l)}</button>`).join(""):`<span class="muted">Crea prima un salvadanaio dalla scheda Risparmi.</span>`}</div></div>
-      ${st.tipo!=="risparmio" && S.settings.progetti.length ? `<div class="field"><label>Progetto</label><div class="cats" id="fmPj"><button data-p="" class="${!st.progetto?"on":""}">Nessuno</button>${S.settings.progetti.map(p=>`<button data-p="${p.id}" class="${p.id===st.progetto?"on":""}">${esc(p.nome)}</button>`).join("")}</div></div>` : ""}
       <div class="two">
         <div class="field"><label for="fmD">Data</label><input id="fmD" type="date" value="${esc(data)}"></div>
         <div class="field"><label for="fmN">Nota</label><input id="fmN" placeholder="Facoltativa" value="${esc(nota)}"></div></div>
@@ -1027,7 +1190,6 @@ function openForm(mov, preset){
     $$("#sheetBody .seg button[data-t]").forEach(b=>b.onclick=()=>{ st.tipo=b.dataset.t; draw(true); });
     $$("#sheetBody .seg button[data-p]").forEach(b=>b.onclick=()=>{ st.prelievo=b.dataset.p==="1"; draw(true); });
     $$("#fmCats button").forEach(b=>b.onclick=()=>{ st.categoria=b.dataset.c; $$("#fmCats button").forEach(x=>x.classList.toggle("on",x===b)); });
-    $$("#fmPj button").forEach(b=>b.onclick=()=>{ st.progetto=b.dataset.p; $$("#fmPj button").forEach(x=>x.classList.toggle("on",x===b)); });
     if (isNew && !keep) setTimeout(()=>$("#fmI").focus(),260);
     $("#fmOk").onclick = () => {
       let v = parseNum($("#fmI").value);
@@ -1037,8 +1199,7 @@ function openForm(mov, preset){
       if (st.tipo==="risparmio" && st.prelievo) v = -v;
       const rec = {id: mov?.id || uid(), tipo:st.tipo, importo:v, categoria:st.categoria, data:d, nota:$("#fmN").value.trim()};
       if (mov?.fixedId) rec.fixedId = mov.fixedId;
-      if (st.tipo!=="risparmio" && st.progetto) rec.progetto = st.progetto;
-      if (previstaId){ const pj=pjOf(st.progetto); const x=pj?.previste?.find(i=>i.id===previstaId); if (x){ x.fatto=true; x.movId=rec.id; saveSettings(); } }
+
       if (mov){ // togli dal mese vecchio
         const ok = keyOf(mov.data); const mo = S.months[ok];
         if (mo){ mo.movimenti = mo.movimenti.filter(x=>x.id!==mov.id); if (ok!==keyOf(d)) saveMonth(ok); }
@@ -1068,9 +1229,18 @@ function openForm(mov, preset){
 }
 
 /* ---------- Sheet ---------- */
-function openSheet(html){ $("#sheetBody").innerHTML = html; $("#sheetBg").classList.add("open"); $("#sheet").classList.add("open"); document.body.classList.add("sheet-open"); }
-function closeSheet(){ $("#sheetBg").classList.remove("open"); $("#sheet").classList.remove("open"); document.body.classList.remove("sheet-open"); }
-$("#sheetBg").onclick = closeSheet;
+let skipPop=0;
+function openSheet(html){
+  const wasOpen=$("#sheet").classList.contains("open");
+  $("#sheetBody").innerHTML = html; $("#sheetBg").classList.add("open"); $("#sheet").classList.add("open"); document.body.classList.add("sheet-open");
+  if (!wasOpen) history.pushState({v:S.view, pj:S.pj, sheet:true}, "");
+}
+function closeSheet(fromPop){
+  if (!$("#sheet").classList.contains("open")) return;
+  $("#sheetBg").classList.remove("open"); $("#sheet").classList.remove("open"); document.body.classList.remove("sheet-open");
+  if (!fromPop && history.state && history.state.sheet){ skipPop++; history.back(); }
+}
+$("#sheetBg").onclick = () => closeSheet();
 document.addEventListener("keydown", e=>{ if (e.key==="Escape") closeSheet(); });
 
 /* ---------- Esportazione ---------- */
@@ -1112,21 +1282,65 @@ const monthAnim = () => { const s=$("#v-"+S.view); s.classList.remove("enter"); 
 $("#prevM").onclick = () => { S.cur = shiftMonth(S.cur,-1); render(); monthAnim(); };
 $("#nextM").onclick = () => { S.cur = shiftMonth(S.cur,1); render(); monthAnim(); };
 $("#fab").onclick = () => openForm(null);
-$("#pjBack").onclick = () => { if (history.state && history.state.v==="progetto") history.back(); else goView("home"); };
+$("#pjBack").onclick = () => history.back();
 $("#pjEdit").onclick = () => openProjectForm(pjOf(S.pj));
-$("#pjSaveBtn").onclick = () => { const pj=pjOf(S.pj); openForm(null, {tipo:"risparmio", categoria:pj.pigId}); };
-$("#pjSpendBtn").onclick = () => openForm(null, {tipo:"uscita", progetto:S.pj});
-window.addEventListener("popstate", () => { if ($("#sheet").classList.contains("open")) closeSheet(); if (S.view==="progetto") goView("home"); });
+$("#pjAddBtn").onclick = () => openPjMov(pjOf(S.pj), null, {tipo:"versamento"});
+$("#pjSpendBtn").onclick = () => openPjMov(pjOf(S.pj), null, {tipo:"spesa"});
+$("#pjTakeBtn").onclick = () => openPjMov(pjOf(S.pj), null, {tipo:"prelievo"});
+$("#ccHero").onclick = openDisp;
+$("#ccAdd").onclick = () => openVoce(null);
+$("#gearBtn").onclick = () => goView("impostazioni");
+window.addEventListener("popstate", e => {
+  if (skipPop){ skipPop--; return; }
+  if ($("#sheet").classList.contains("open")){ closeSheet(true); return; }
+  if (!$("#calc").classList.contains("hidden") && e.state && e.state.calc){ return; }
+  const st=e.state;
+  if (st && st.v){ S.pj=st.pj||S.pj; goView(st.v,{fromPop:true}); }
+});
 $$("#filterRow .chip").forEach(c=>c.onclick=()=>{ S.filter=c.dataset.f; S.cat=null; $$("#filterRow .chip").forEach(x=>x.classList.toggle("on",x===c)); renderMonth(); });
-function goView(v){
+const TABS=["mese","home","conticini","grafici","salvadanai"];
+function goView(v, opt={}){
+  const prev=S.view;
+  if (!opt.fromPop && !opt.init && v!==prev){ opt.replace ? history.replaceState({v, pj:S.pj},"") : history.pushState({v, pj:S.pj},""); }
   S.view = v;
   const tab = v==="progetto" ? "home" : v;
   $$("nav.tabs button").forEach(x=>x.classList.toggle("on", x.dataset.v===tab));
-  ["home","progetto","mese","grafici","salvadanai","impostazioni"].forEach(n=>{ const s=$("#v-"+n); s.classList.toggle("hidden", n!==v); s.classList.remove("enter"); if (n===v){ void s.offsetWidth; s.classList.add("enter"); } });
+  const pi=TABS.indexOf(prev==="progetto"?"home":prev), ni=TABS.indexOf(tab);
+  const anim = (pi>=0 && ni>=0 && pi!==ni) ? (ni>pi?"slide-l":"slide-r") : "enter";
+  ["conticini","home","progetto","mese","grafici","salvadanai","impostazioni"].forEach(n=>{ const s=$("#v-"+n); s.classList.toggle("hidden", n!==v); s.classList.remove("enter","slide-l","slide-r"); if (n===v){ void s.offsetWidth; s.classList.add(anim); } });
   $("header.top").style.display = (v==="mese"||v==="grafici") ? "" : "none";
+  $("#fab").classList.toggle("hidden", !(v==="mese"));
+  $("#calcBtn").classList.toggle("hidden", v==="impostazioni");
   window.scrollTo(0,0); render();
 }
-$$("nav.tabs button").forEach(b=>b.onclick=()=>{ if (S.view==="progetto" && history.state && history.state.v==="progetto") history.replaceState(null,""); goView(b.dataset.v); });
+$$("nav.tabs button").forEach(b=>b.onclick=()=>{ if (b.dataset.v!==S.view) goView(b.dataset.v); });
+/* scorrimento orizzontale tra le schede */
+(function(){
+  let sx=0, sy=0, t0=0, ok=false;
+  document.addEventListener("touchstart", e=>{
+    const t=e.touches[0]; ok = e.touches.length===1 && !e.target.closest(".catbar,.casebar,canvas,.calc,.sheet,input,select,.cats,nav.tabs") && TABS.includes(S.view==="progetto"?"x":S.view);
+    sx=t.clientX; sy=t.clientY; t0=Date.now();
+  }, {passive:true});
+  document.addEventListener("touchend", e=>{
+    if (!ok) return; ok=false;
+    const t=e.changedTouches[0], dx=t.clientX-sx, dy=t.clientY-sy;
+    if (Math.abs(dx)<70 || Math.abs(dx)<Math.abs(dy)*1.8 || Date.now()-t0>700) return;
+    const i=TABS.indexOf(S.view), n=i+(dx<0?1:-1);
+    if (n>=0 && n<TABS.length){ goView(TABS[n]); try{navigator.vibrate&&navigator.vibrate(6);}catch(x){} }
+  }, {passive:true});
+})();
+/* installazione */
+let deferredPrompt=null;
+const isStandalone=()=>window.matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+function refreshInstall(){ const show=!isStandalone(); $("#installBtn").classList.toggle("hidden",!show); $("#installCard").classList.toggle("hidden",!show); }
+window.addEventListener("beforeinstallprompt",e=>{ e.preventDefault(); deferredPrompt=e; refreshInstall(); });
+window.addEventListener("appinstalled",()=>{ deferredPrompt=null; refreshInstall(); petalRain(); toast("App installata"); });
+async function doInstall(){
+  if (deferredPrompt){ deferredPrompt.prompt(); await deferredPrompt.userChoice.catch(()=>null); deferredPrompt=null; refreshInstall(); return; }
+  openSheet(`<h3>Installa l'app</h3><p>Tocca i tre puntini di Chrome in alto a destra, poi <b>Installa app</b>.</p><p class="muted">Se l'opzione non c'è, l'app potrebbe essere già installata: cercala tra le app del telefono.</p><div class="actions"><button class="btn" id="instOk">Ho capito</button></div>`);
+  $("#instOk").onclick=()=>closeSheet();
+}
+$("#installBtn").onclick=doInstall; $("#installBtn2").onclick=doInstall;
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", ()=>{ if (S.view==="grafici") renderCharts(); });
 
 /* ---------- Calcolatrice ---------- */
@@ -1170,7 +1384,7 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", (
   $("#calcX").onclick=()=>toggle(false);
   $("#calcUse").onclick=()=>{
     const r = expr ? evaluate(expr) : lastRes; if (r===null || r===undefined){ toast("Nessun risultato da usare"); return; }
-    const target = document.querySelector("#sheet.open #fmI, #sheet.open #fxI, #sheet.open #pgO");
+    const target = document.querySelector("#sheet.open #fmI, #sheet.open #fxI, #sheet.open #pgO, #sheet.open #ccI, #sheet.open #pmI");
     const val = String(Math.abs(r)).replace(".",",");
     if (target){ target.value = val; target.classList.remove("pop"); void target.offsetWidth; target.classList.add("pop"); toast("Importo inserito"); }
     else { openForm(null); setTimeout(()=>{ const i=$("#fmI"); if(i) i.value=val; },50); }
@@ -1188,15 +1402,33 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", (
 
 /* ---------- Avvio ---------- */
 (async function start(){
-  goView("home");
+  history.replaceState({v:"conticini"},"");
+  goView("conticini",{init:true});
   await Store.init();
   const data = await Store.loadAll();
   if (data.settings) S.settings = Object.assign(structuredClone(DEFAULT_SETTINGS), data.settings);
   applySkin(S.settings.tema || "sobrio");
   S.months = data.months || {};
   S.settings.progetti ||= [];
-  renderStoreInfo();
-  goView("home");
+  S.settings.conticini ||= {disponibilita:0, voci:[]};
+  // migrazione: i movimenti dei progetti escono dai conti del mese
+  let moved=false;
+  S.settings.progetti.forEach(pj=>{
+    pj.movimenti ||= [];
+    Object.keys(S.months).forEach(k=>{
+      const keep=[];
+      S.months[k].movimenti.forEach(m=>{
+        if (m.progetto===pj.id && m.tipo!=="risparmio"){ pj.movimenti.push({id:m.id, tipo:m.tipo==="uscita"?"spesa":"versamento", importo:m.importo, data:m.data, nota:m.nota||"", categoria:m.categoria}); moved=true; }
+        else if (pj.pigId && m.tipo==="risparmio" && m.categoria===pj.pigId){ pj.movimenti.push({id:m.id, tipo:m.importo>=0?"versamento":"prelievo", importo:Math.abs(m.importo), data:m.data, nota:m.nota||""}); moved=true; }
+        else keep.push(m);
+      });
+      if (keep.length!==S.months[k].movimenti.length){ S.months[k].movimenti=keep; saveMonth(k); }
+    });
+    if (pj.pigId){ S.settings.pigs=S.settings.pigs.filter(p=>p.id!==pj.pigId); delete pj.pigId; moved=true; }
+  });
+  if (moved) saveSettings();
+  renderStoreInfo(); refreshInstall();
+  goView("conticini",{init:true});
 })();
 if ("serviceWorker" in navigator && location.protocol==="https:") navigator.serviceWorker.register("sw.js").catch(()=>{});
 })();
