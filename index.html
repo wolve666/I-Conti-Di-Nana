@@ -168,7 +168,7 @@ nav.tabs button.on{color:var(--primary)}
 .iconbtn{color:var(--primary);border-radius:50%}
 .monthnav h1{color:var(--ink)}
 .daysep{background:var(--surface-2);color:var(--ink-2)}
-nav.tabs{position:fixed;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+nav.tabs{position:fixed;background:var(--surface);transform:translateZ(0);will-change:transform}
 h2{color:var(--primary)}
 .sheet{border-radius:28px 28px 0 0}
 .sheet h3{color:var(--primary)}
@@ -334,6 +334,35 @@ section.slide-l{animation:slideL .28s cubic-bezier(.2,.8,.2,1)}
 section.slide-r{animation:slideR .28s cubic-bezier(.2,.8,.2,1)}
 @keyframes slideL{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
 @keyframes slideR{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+
+/* ---------- v2.1: niente riquadro blu al tocco, animazioni schede ---------- */
+html{-webkit-tap-highlight-color:transparent}
+button,a,label{-webkit-tap-highlight-color:transparent}
+button:focus:not(:focus-visible){outline:none}
+.wrap{overflow-x:clip}
+section{backface-visibility:hidden}
+nav.tabs button{position:relative;transition:color .2s}
+nav.tabs button svg{transition:transform .2s}
+nav.tabs button:active svg{transform:scale(.85)}
+nav.tabs button.on:not(.main) svg{animation:tabPop .45s cubic-bezier(.3,1.7,.5,1)}
+nav.tabs button:not(.main)::after{content:"";position:absolute;bottom:5px;left:50%;width:0;height:3px;border-radius:2px;background:var(--primary);transform:translateX(-50%);transition:width .25s cubic-bezier(.3,1.5,.5,1)}
+nav.tabs button.on:not(.main)::after{width:18px}
+nav.tabs button.main.on .circ{animation:circPop .5s cubic-bezier(.3,1.7,.5,1)}
+@keyframes tabPop{0%{transform:scale(1)}40%{transform:scale(1.25) translateY(-2px)}100%{transform:scale(1)}}
+@keyframes circPop{0%{transform:scale(1)}40%{transform:scale(1.16)}100%{transform:scale(1.08)}}
+/* ---------- Riquadri spostabili ---------- */
+.blocks{display:flex;flex-direction:column}
+.blk{margin-top:12px;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+.blk:first-child{margin-top:0}
+.blk > h2:first-child{margin-top:4px}
+.blk > .card:last-child,.blk > .btnrow{margin-bottom:0}
+.ptile{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+.lifted{position:fixed !important;z-index:80;margin:0 !important;pointer-events:none;box-shadow:0 22px 48px rgba(0,0,0,.25) !important;transform:scale(1.03) rotate(-.8deg);transition:transform .18s cubic-bezier(.2,1.4,.4,1);opacity:.97;border-radius:22px;background:var(--bg)}
+.ph{border:2px dashed var(--primary);border-radius:22px;background:color-mix(in srgb,var(--primary) 12%,transparent);margin-top:12px;animation:phIn .2s ease}
+.pgrid .ph{margin-top:0}
+@keyframes phIn{from{opacity:0;transform:scale(.96)}}
+.holding{animation:hold .45s ease forwards}
+@keyframes hold{to{transform:scale(.97)}}
 </style>
 </head>
 <body>
@@ -405,7 +434,7 @@ section.slide-r{animation:slideR .28s cubic-bezier(.2,.8,.2,1)}
 </g><g class="sk-s"><use href="#hibS" x="30" y="50" width="120" height="120" transform="rotate(-15 90 110)" style="color:#F1F0EC"/></g></svg>
 <svg class="flora ml" viewBox="0 0 100 100" aria-hidden="true"><use href="#hib" x="5" y="5" width="90" height="90"/></svg>
 <div class="wrap">
-  <div class="brandrow"><div class="brand">I conti di Nana</div><span class="ver">v2.0</span><span class="status" id="status">Caricamento…</span><button class="installbtn hidden" id="installBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Installa</button><button class="gearbtn" id="gearBtn" aria-label="Impostazioni"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></button></div>
+  <div class="brandrow"><div class="brand">I conti di Nana</div><span class="ver">v2.1</span><span class="status" id="status">Caricamento…</span><button class="installbtn hidden" id="installBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Installa</button><button class="gearbtn" id="gearBtn" aria-label="Impostazioni"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></button></div>
   <header class="top">
     <div class="monthnav">
       <button class="iconbtn" id="prevM" aria-label="Mese precedente">‹</button>
@@ -416,15 +445,17 @@ section.slide-r{animation:slideR .28s cubic-bezier(.2,.8,.2,1)}
 
   <!-- CONTICINI -->
   <section id="v-conticini" class="hidden">
-    <div class="hero cc-hero" id="ccHero" style="cursor:pointer">
+    <div class="blocks" id="bConticini">
+    <div class="blk" data-b="disponibilita"><div class="hero cc-hero" id="ccHero" style="cursor:pointer">
       <svg class="mini" viewBox="0 0 100 100" aria-hidden="true"><use class="sk-f" href="#hib" width="100" height="100"/><use class="sk-s" href="#hibS" width="100" height="100" style="color:#F2F1EC"/></svg>
       <div class="lbl">Disponibilità sul conto · tocca per aggiornare</div>
       <div class="big num" id="ccDisp">0,00 €</div>
       <span class="cc-diff zero" id="ccDiff">—</span>
+    </div></div>
+    <div class="blk" data-b="spese"><div class="sheetx" id="ccSpese"></div></div>
+    <div class="blk" data-b="investimenti"><div class="sheetx" id="ccInv"></div></div>
+    <div class="blk" data-b="totali"><div class="cc-sum" id="ccSum" style="margin-top:0"></div></div>
     </div>
-    <div class="sheetx" id="ccSpese" style="margin-top:14px"></div>
-    <div class="sheetx" id="ccInv" style="margin-top:12px"></div>
-    <div class="cc-sum" id="ccSum"></div>
     <button class="btn ghost" id="ccAdd" style="width:100%;margin-top:12px">Aggiungi voce</button>
   </section>
 
@@ -440,7 +471,8 @@ section.slide-r{animation:slideR .28s cubic-bezier(.2,.8,.2,1)}
       <h1 id="pjTitle">—</h1>
       <button class="iconbtn" id="pjEdit" aria-label="Modifica progetto"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></button>
     </div>
-    <div class="hero">
+    <div class="blocks" id="bProgetto">
+    <div class="blk" data-b="fondo"><div class="hero">
       <svg class="mini" viewBox="0 0 100 100" aria-hidden="true"><use class="sk-f" href="#hib" width="100" height="100"/><use class="sk-s" href="#hibS" width="100" height="100" style="color:#F2F1EC"/></svg>
       <div class="lbl" id="pjLbl">Fondo del progetto</div>
       <div class="big num" id="pjFund">0,00 €</div>
@@ -451,21 +483,23 @@ section.slide-r{animation:slideR .28s cubic-bezier(.2,.8,.2,1)}
         <div><span class="dot" style="background:var(--ink-2)"></span>Budget<b class="num" id="pjBudget">—</b></div>
       </div>
     </div>
-    <div id="pjLink"></div>
-    <div class="btnrow">
+    <div id="pjLink"></div></div>
+    <div class="blk" data-b="azioni"><div class="btnrow" style="margin:0">
       <button class="btn small" id="pjAddBtn">+ Aggiungi fondi</button>
       <button class="btn ghost small" id="pjSpendBtn">Registra spesa</button>
       <button class="btn ghost small" id="pjTakeBtn">− Togli</button>
+    </div></div>
+    <div class="blk" data-b="previste"><h2>Spese previste</h2>
+    <div class="card plan" id="pjPlan" style="margin-bottom:0"></div></div>
+    <div class="blk" data-b="movimenti"><h2>Movimenti del progetto</h2>
+    <div class="list" id="pjList"></div></div>
     </div>
-    <h2>Spese previste</h2>
-    <div class="card plan" id="pjPlan"></div>
-    <h2>Movimenti del progetto</h2>
-    <div class="list" id="pjList"></div>
   </section>
 
   <!-- MESE -->
   <section id="v-mese" class="hidden">
-    <div class="hero">
+    <div class="blocks" id="bMese">
+    <div class="blk" data-b="riepilogo"><div class="hero">
       <svg class="mini" viewBox="0 0 100 100" aria-hidden="true"><use class="sk-f" href="#hib" width="100" height="100"/><use class="sk-s" href="#hibS" width="100" height="100" style="color:#F2F1EC"/></svg>
       <div class="lbl">Rimasto questo mese</div>
       <div class="big num" id="hBal">0,00 €</div>
@@ -475,8 +509,9 @@ section.slide-r{animation:slideR .28s cubic-bezier(.2,.8,.2,1)}
         <div><span class="dot" style="background:var(--out)"></span>Uscite<b class="num" id="hOut">0</b></div>
         <div><span class="dot" style="background:var(--save)"></span>Messi da parte<b class="num" id="hSave">0</b></div>
       </div>
-    </div>
-    <div class="btnrow" id="fixedRow"></div>
+    </div></div>
+    <div class="blk" data-b="movimenti">
+    <div class="btnrow" id="fixedRow" style="margin-top:0"></div>
     <div class="btnrow" id="filterRow">
       <button class="chip on" data-f="tutti">Tutti</button>
       <button class="chip" data-f="uscita">Uscite</button>
@@ -486,18 +521,22 @@ section.slide-r{animation:slideR .28s cubic-bezier(.2,.8,.2,1)}
     <div class="catbar" id="catBar"></div>
     <div id="catSum"></div>
     <div class="list" id="movList" style="margin-top:10px"></div>
+    </div>
+    </div>
   </section>
 
   <!-- GRAFICI -->
   <section id="v-grafici" class="hidden">
-    <h2>Dove vanno i soldi questo mese</h2>
-    <div class="card"><div class="chartbox"><canvas id="cCat"></canvas></div><div id="catEmpty" class="muted hidden" style="text-align:center;padding:20px 0">Nessuna uscita registrata in questo mese.</div></div>
-    <h2>Entrate e uscite, ultimi 12 mesi</h2>
-    <div class="card"><div class="chartbox tall"><canvas id="cYear"></canvas></div></div>
-    <h2>Guadagno o perdita mese per mese</h2>
-    <div class="card"><div class="chartbox"><canvas id="cNet"></canvas></div></div>
-    <h2>Risparmi accumulati</h2>
-    <div class="card"><div class="chartbox"><canvas id="cSave"></canvas></div></div>
+    <div class="blocks" id="bGrafici">
+    <div class="blk" data-b="categorie"><h2>Dove vanno i soldi questo mese</h2>
+    <div class="card"><div class="chartbox"><canvas id="cCat"></canvas></div><div id="catEmpty" class="muted hidden" style="text-align:center;padding:20px 0">Nessuna uscita registrata in questo mese.</div></div></div>
+    <div class="blk" data-b="anno"><h2>Entrate e uscite, ultimi 12 mesi</h2>
+    <div class="card"><div class="chartbox tall"><canvas id="cYear"></canvas></div></div></div>
+    <div class="blk" data-b="netto"><h2>Guadagno o perdita mese per mese</h2>
+    <div class="card"><div class="chartbox"><canvas id="cNet"></canvas></div></div></div>
+    <div class="blk" data-b="risparmi"><h2>Risparmi accumulati</h2>
+    <div class="card"><div class="chartbox"><canvas id="cSave"></canvas></div></div></div>
+    </div>
   </section>
 
   <!-- SALVADANAI -->
@@ -525,6 +564,8 @@ section.slide-r{animation:slideR .28s cubic-bezier(.2,.8,.2,1)}
     <div class="card" id="catOutSet"></div>
     <h2>Categorie di entrata</h2>
     <div class="card" id="catInSet"></div>
+    <h2>Disposizione</h2>
+    <div class="card"><p class="muted" style="margin-top:0">Tieni premuto un riquadro finché non si solleva, poi trascinalo dove preferisci. Vale per Conticini, Mese, Grafici, la scheda dei progetti e l'ordine dei progetti.</p><button class="btn ghost small" id="resetLayout">Ripristina disposizione originale</button></div>
     <div id="installCard" class="hidden"><h2>Installazione</h2><div class="card"><p class="muted" style="margin-top:0">Installa l'app sul telefono: si apre dalla sua icona, a schermo intero.</p><button class="btn" id="installBtn2">Installa app</button></div></div>
     <h2>Backup</h2>
     <div class="card">
@@ -1323,6 +1364,7 @@ $$("nav.tabs button").forEach(b=>b.onclick=()=>{ if (b.dataset.v!==S.view) goVie
   }, {passive:true});
   document.addEventListener("touchend", e=>{
     if (!ok) return; ok=false;
+    if (sortDragging || Date.now()-sortJustEnded<500) return;
     const t=e.changedTouches[0], dx=t.clientX-sx, dy=t.clientY-sy;
     if (Math.abs(dx)<70 || Math.abs(dx)<Math.abs(dy)*1.8 || Date.now()-t0>700) return;
     const i=TABS.indexOf(S.view), n=i+(dx<0?1:-1);
@@ -1340,6 +1382,7 @@ async function doInstall(){
   openSheet(`<h3>Installa l'app</h3><p>Tocca i tre puntini di Chrome in alto a destra, poi <b>Installa app</b>.</p><p class="muted">Se l'opzione non c'è, l'app potrebbe essere già installata: cercala tra le app del telefono.</p><div class="actions"><button class="btn" id="instOk">Ho capito</button></div>`);
   $("#instOk").onclick=()=>closeSheet();
 }
+$("#resetLayout").onclick=()=>resetLayout();
 $("#installBtn").onclick=doInstall; $("#installBtn2").onclick=doInstall;
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", ()=>{ if (S.view==="grafici") renderCharts(); });
 
@@ -1400,6 +1443,82 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", (
     const m={"Enter":"=","Backspace":"B","Escape":"C",".":",",",":","}; const k=m[e.key]||e.key; if(/^[0-9+\-*/%,=CB]$/.test(k)){ e.preventDefault(); key(k); } });
 })();
 
+/* ---------- Riquadri spostabili (tieni premuto e trascina) ---------- */
+let sortDragging=false, sortJustEnded=0;
+function applyOrder(container, key){
+  const ord=(S.settings.layout||{})[key]; if(!ord||!container) return;
+  ord.forEach(id=>{ const b=[...container.children].find(x=>x.dataset.b===id); if(b) container.appendChild(b); });
+}
+function makeSortable(container, itemSel, getId, onDrop, isGrid){
+  let timer=null, start=null, item=null, ph=null, dragging=false, offX=0, offY=0, suppress=false, lastP=null, raf=null;
+  const pt=e=>e.touches?e.touches[0]:e;
+  function down(e){
+    if (dragging) return;
+    const it=e.target.closest(itemSel); if(!it||it.parentElement!==container) return;
+    if (e.type==="mousedown"&&e.button!==0) return;
+    const p=pt(e); start={x:p.clientX,y:p.clientY}; item=it; lastP=p;
+    it.classList.add("holding");
+    timer=setTimeout(lift,450);
+  }
+  function lift(){
+    if(!item) return;
+    dragging=true; sortDragging=true; item.classList.remove("holding");
+    const r=item.getBoundingClientRect();
+    offX=lastP.clientX-r.left; offY=lastP.clientY-r.top;
+    ph=document.createElement("div"); ph.className="ph"; ph.style.height=r.height+"px";
+    item.parentNode.insertBefore(ph,item);
+    Object.assign(item.style,{width:r.width+"px",height:r.height+"px",left:r.left+"px",top:r.top+"px"});
+    item.classList.add("lifted"); document.body.appendChild(item);
+    try{ navigator.vibrate&&navigator.vibrate(25); }catch(e){}
+    raf=requestAnimationFrame(autoScroll);
+  }
+  function autoScroll(){
+    if(!dragging) return;
+    const y=lastP.clientY, top=90, bot=window.innerHeight-150;
+    if (y<top) window.scrollBy(0,-Math.ceil((top-y)/6)); else if (y>bot) window.scrollBy(0,Math.ceil((y-bot)/6));
+    place(); raf=requestAnimationFrame(autoScroll);
+  }
+  function place(){
+    const p=lastP, sibs=[...container.children].filter(x=>x.matches(itemSel)&&x.offsetHeight>0);
+    let best=null, bd=1e9;
+    sibs.forEach(s=>{ const r=s.getBoundingClientRect(), d=Math.hypot(p.clientX-(r.left+r.width/2), p.clientY-(r.top+r.height/2)); if(d<bd){bd=d;best=s;} });
+    if(!best) return;
+    const r=best.getBoundingClientRect();
+    const after = (isGrid && Math.abs(p.clientY-(r.top+r.height/2))<r.height/2) ? p.clientX>r.left+r.width/2 : p.clientY>r.top+r.height/2;
+    const ref=after?best.nextSibling:best;
+    if (ref!==ph) container.insertBefore(ph, ref);
+  }
+  function move(e){
+    if(!item) return; const p=pt(e);
+    if(!dragging){ if(Math.hypot(p.clientX-start.x,p.clientY-start.y)>8){ clearTimeout(timer); item.classList.remove("holding"); item=null; } return; }
+    if (e.cancelable) e.preventDefault();
+    lastP=p; item.style.left=(p.clientX-offX)+"px"; item.style.top=(p.clientY-offY)+"px";
+  }
+  function up(){
+    clearTimeout(timer);
+    if (item) item.classList.remove("holding");
+    if (dragging){
+      cancelAnimationFrame(raf); dragging=false; sortDragging=false; sortJustEnded=Date.now();
+      ph.replaceWith(item); item.classList.remove("lifted"); ["width","height","left","top"].forEach(k=>item.style[k]="");
+      suppress=true; setTimeout(()=>suppress=false,400);
+      onDrop([...container.children].filter(x=>x.matches(itemSel)).map(getId));
+    }
+    item=null; ph=null;
+  }
+  container.addEventListener("touchstart",down,{passive:true});
+  document.addEventListener("touchmove",move,{passive:false});
+  document.addEventListener("touchend",up); document.addEventListener("touchcancel",up);
+  container.addEventListener("mousedown",down); document.addEventListener("mousemove",move); document.addEventListener("mouseup",up);
+  container.addEventListener("click",e=>{ if(suppress){ e.stopPropagation(); e.preventDefault(); } },true);
+  container.addEventListener("contextmenu",e=>{ if(item||dragging) e.preventDefault(); });
+}
+function saveLayout(key, ids){ (S.settings.layout ||= {})[key]=ids; saveSettings(); toast("Disposizione salvata"); }
+const SORT_KEYS={bConticini:"conticini",bMese:"mese",bGrafici:"grafici",bProgetto:"progetto"};
+Object.entries(SORT_KEYS).forEach(([id,key])=>makeSortable($("#"+id), ".blk", b=>b.dataset.b, ids=>saveLayout(key,ids)));
+makeSortable($("#pGrid"), ".ptile[data-pj]", t=>t.dataset.pj, ids=>{ const m=Object.fromEntries(S.settings.progetti.map(p=>[p.id,p])); S.settings.progetti=ids.map(i=>m[i]).filter(Boolean); saveSettings(); toast("Ordine dei progetti salvato"); renderHome(); }, true);
+const DEFAULT_ORDER={bConticini:["disponibilita","spese","investimenti","totali"],bMese:["riepilogo","movimenti"],bGrafici:["categorie","anno","netto","risparmi"],bProgetto:["fondo","azioni","previste","movimenti"]};
+function resetLayout(){ delete S.settings.layout; saveSettings(); Object.entries(DEFAULT_ORDER).forEach(([id,ord])=>{ const c=$("#"+id); ord.forEach(b=>{ const el=[...c.children].find(x=>x.dataset.b===b); if(el) c.appendChild(el); }); }); toast("Disposizione ripristinata"); }
+
 /* ---------- Avvio ---------- */
 (async function start(){
   history.replaceState({v:"conticini"},"");
@@ -1428,6 +1547,7 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", (
   });
   if (moved) saveSettings();
   renderStoreInfo(); refreshInstall();
+  Object.entries(SORT_KEYS).forEach(([id,key])=>applyOrder($("#"+id),key));
   goView("conticini",{init:true});
 })();
 if ("serviceWorker" in navigator && location.protocol==="https:") navigator.serviceWorker.register("sw.js").catch(()=>{});
